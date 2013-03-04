@@ -6,18 +6,18 @@
 #include <glm.hpp>
 
 class Ray {
-public:
-    Ray();
-    Ray(const Vector4d& origin, const Vector4d& direction);
-    Ray(const double& o_x, const double& o_y, const double& o_z, 
-            const double& d_x, const double& d_y, const double& d_z);
+    public:
+        Ray();
+        Ray(const Vector4d& origin, const Vector4d& direction);
+        Ray(const double& o_x, const double& o_y, const double& o_z, 
+                const double& d_x, const double& d_y, const double& d_z);
 
-    const Vector4d& get_origin() const;
-    void set_origin(const Vector4d& origin);
+        const Vector4d& get_origin() const;
+        void set_origin(const Vector4d& origin);
 
-private:
-    Vector4d origin;
-    Vector4d direction;
+    private:
+        Vector4d origin;
+        Vector4d direction;
 };
 
 

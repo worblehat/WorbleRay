@@ -1,17 +1,19 @@
+#ifndef COLOR_H
+#define COLOR_H
 
 class Color
 {
-public:
-    Color(float r, float g, float b);
+    public:
+        Color(float r, float g, float b);
 
-    float get_r() const;
-    float get_g() const;
-    float get_b() const;
+        float get_r() const;
+        float get_g() const;
+        float get_b() const;
 
-private:
-    float r;
-    float g;
-    float b;
+    private:
+        float r;
+        float g;
+        float b;
 };
 
 inline Color::Color(float r, float g, float b)
@@ -36,4 +38,4 @@ inline float Color::get_b() const
     return b;
 }
 
-
+#endif //ifndef COLOR_H
