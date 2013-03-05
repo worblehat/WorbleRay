@@ -8,12 +8,11 @@
  * 
  */
 
-#ifndef MATERIAL_H
-#define MATERIAL_H
+#ifndef MATHUTIL_H
+#define MATHUTIL_H
 
-class Material
-{
+#include <glm.hpp>
 
-};
+#define Vector4d glm::dvec4 
 
-#endif //ifndef MATERIAL_H
+#endif //ifndef MATHUTIL_H
