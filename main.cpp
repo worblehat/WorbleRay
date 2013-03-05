@@ -1,3 +1,4 @@
+#include "SDLWindow.h"
 
 #include <iostream>
 
@@ -10,6 +11,7 @@ int main()
     // Set light sources
 
     // Define render window
+    SDLWindow window(800, 600);
     
     // For each pixel
 
@@ -19,6 +21,9 @@ int main()
 
         // Set pixel color
 
+
+    char i;
+    std::cin >> i;
 
     return 0;
 }

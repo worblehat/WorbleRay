@@ -1,12 +1,13 @@
-SOURCE=main.cpp 
+SOURCE=main.cpp SDLWindow.cpp
 PROGRAM=raytracer
-INCLUDE=../glm
 C=g++
+CFLAGS_SDL=-I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT
+LIBFLAGS_SDL=-L/usr/lib/x86_64-linux-gnu -lSDL
 
 all: $(PROGRAM)
 
 $(PROGRAM): $(SOURCE)
-	$(C) -I$(INCLUDE) -o$(PROGRAM) $(SOURCE) 
+	$(C) $(SOURCE) -o$(PROGRAM) $(LIBFLAGS_SDL) $(CFLAGS_SDL)
 
 clean:
 	rm -rf *.o raytracer
