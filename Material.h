@@ -11,9 +11,21 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
+#include "Color.h"
+#include "Intersection.h"
+#include "Scene.h"
+
+//TODO fortward declaration necessary here?
+class Scene;
+
+/**
+ * \brief Abstract base class for Materials that are able to shade an intersection point.
+ */
 class Material
 {
-
+    public:
+        virtual ~Material(){};
+        virtual Color shade(const Intersection& intersection, const Scene& scene) const = 0;
 };
 
 #endif //ifndef MATERIAL_H

@@ -8,14 +8,15 @@
  * 
  */
 
-#ifndef MATHUTIL_H
-#define MATHUTIL_H
+#include "Plane.h"
 
-#include <glm/glm.hpp>
 
-#define Vector4d glm::dvec4 
-#define Vector4f glm::vec4
-#define Matrix4d glm::dmat4
-#define Matrix4f glm::mat4
+const Intersection Plane::intersect(const Ray& ray)
+{
+    Intersection intersection;
+    //TODO NEXT
+    intersection.set_hit_object(this);
+    intersection.set_exists(true);
+    return intersection;
+}
 
-#endif //ifndef MATHUTIL_H

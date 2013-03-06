@@ -13,7 +13,8 @@
 
 class Camera
 {
-
+    public:
+        virtual ~Camera(){};
 };
 
 #endif //ifndef CAMERA_H

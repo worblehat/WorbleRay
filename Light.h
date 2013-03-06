@@ -11,9 +11,17 @@
 #ifndef LIGHT_H
 #define LIGHT_H
 
+#include "Color.h"
+
+
+/**
+ * \brief Abstract base class for lights.
+ */
 class Light
 {
-
+    public:
+        virtual ~Light(){};
+        virtual Color calc_intensity() const = 0;        
 };
 
 #endif //ifndef LIGHT_H

@@ -13,8 +13,11 @@
 
 #include "mathutil.h"
 
-#include <glm.hpp>
+#include <glm/glm.hpp>
 
+/**
+ * \brief Ray used by the ray tracer and defined by it's origin and direction.
+ */
 class Ray {
     public:
         Ray();
@@ -24,6 +27,8 @@ class Ray {
 
         const Vector4d& get_origin() const;
         void set_origin(const Vector4d& origin);
+        const Vector4d& get_direction() const;
+        void set_direction(const Vector4d& direction);
 
     private:
         Vector4d origin;
@@ -59,5 +64,15 @@ inline void Ray::set_origin(const Vector4d& origin)
 {
     this->origin = origin; 
 }   
+        
+inline const Vector4d& Ray::get_direction() const
+{
+    return direction;
+}
+
+inline void Ray::set_direction(const Vector4d& direction)
+{
+    this->direction = direction;
+}
 
 #endif //ifndef RAY_H

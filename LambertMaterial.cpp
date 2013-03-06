@@ -8,14 +8,12 @@
  * 
  */
 
-#ifndef MATHUTIL_H
-#define MATHUTIL_H
+#include "LambertMaterial.h"
 
-#include <glm/glm.hpp>
 
-#define Vector4d glm::dvec4 
-#define Vector4f glm::vec4
-#define Matrix4d glm::dmat4
-#define Matrix4f glm::mat4
+Color LambertMaterial::shade(const Intersection& intersection, const Scene& scene) const
+{
+    //TODO NEXT
+    return c_diffuse;
+}
 
-#endif //ifndef MATHUTIL_H

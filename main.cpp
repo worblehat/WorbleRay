@@ -8,32 +8,101 @@
  * 
  */
 
+#include "AmbientLight.h"
+#include "Intersection.h"
+#include "LambertMaterial.h"
+#include "mathutil.h"
+#include "Plane.h"
+#include "Ray.h"
 #include "SDLWindow.h"
+#include "Scene.h"
 
+#include <cstdlib>
 #include <iostream>
 
-int main()
+
+int main(int argc, char *argv[])
 {
+    // Process command line arguments
+    int width, height;
+    if(argc == 3)
+    {
+        width = atoi(argv[1]); 
+        height = atoi(argv[2]);
+    }
+    else
+    {
+        std::cout << "ERROR: wrong number of command line arguments" << std::endl;
+        exit(1);
+    }
+    
     // Define objects
-    
+    Plane *plane = new Plane(Vector4d(0.0, 0.0, 0.0, 1.0), Vector4d(0.0, 0.0, 1.0, 0.0));
+
     // Specify materials
-    
+    LambertMaterial *flat_lambert = new LambertMaterial(Color(0.5f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
+    plane->set_material(flat_lambert);
+
+    // Add objects to scene
+    Scene scene;
+    scene.add_object(plane);
+
     // Set light sources
+    AmbientLight *ambient_light = new AmbientLight(Color(0.5f, 0.5f, 0.5f), 1.0f);
+    scene.set_ambient_light(ambient_light);
 
     // Define render window
-    SDLWindow window(800, 600);
+    Framebuffer *window = new SDLWindow(width, height);
     
+    Ray ray;
+    Color pixel_color;
     // For each pixel
+    for(short y = 0; y < height; ++y)
+    {
+        for(short x = 0; x < width; ++x)
+        {
+            // Create Ray through pixel 
+            // TODO maybe member function of Camera?
+            // TODO Remove and rewrite this later:
+            float pixel_size = 2.0f;
+            float r_x = pixel_size * (x + 0.5f); //TODO check this!
+            float r_y = pixel_size * (y + 0.5f); //TODO check this!
+            float view_z = 50.0f;
+            ray.set_origin(Vector4d(r_x, r_y, 0.0, 1.0));
+            ray.set_direction(Vector4d(0.0, 0.0, view_z, 1.0));
+            
+            // Trace ray 
+            Intersection intersection = scene.trace(ray);
 
-        // Create ray
+            // Shade intersction point
+            if(intersection.get_exists())
+            {
+               pixel_color = intersection.get_hit_object()->get_material()->shade(intersection, scene);
+            }    
+            else
+            {
+               pixel_color = scene.get_background(); 
+            }
+            
+            // Set pixel color
+            window->set_pixel(x, y, pixel_color.get_r(), pixel_color.get_g(), pixel_color.get_b());
+        }
 
-        // Trace ray
+        // Redraw
+        window->refresh();
+    }
 
-        // Set pixel color
+    // Create ray
+
+    // Trace ray
+
+    // Set pixel color
 
 
     char i;
     std::cin >> i;
+
+    delete window;
 
     return 0;
 }

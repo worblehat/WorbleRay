@@ -12,12 +12,38 @@
 #define GEOMETRIC_OBJECT_H
 
 #include "Intersection.h"
+#include "Material.h"
 #include "Ray.h"
 
+
+class Material; //TODO needed?
+class Intersection; //TODO needed?
+
+/**
+ * \brief Abstract base class for geometric objects that can be rendered to the screen.
+ *
+ * A GeometricObject has an oriented surface that can be hit by a ray. Intersection points between a ray
+ * and the object can be shaded using the objects's material.
+ */
 class GeometricObject
 {
     public:
-        virtual const Intersection& intersect(const Ray& ray);
+        virtual ~GeometricObject(){};
+        virtual const Intersection intersect(const Ray& ray) = 0;
+        virtual void set_material(Material const *material);
+        virtual Material const *get_material() const;
+    private:
+        Material const *material;
 };
+
+inline void GeometricObject::set_material(Material const *material)
+{
+    this->material = material;
+} 
+
+inline Material const *GeometricObject::get_material() const
+{
+    return material;
+}
 
 #endif // ifndef GEOMETRIC_OBJECT_H
