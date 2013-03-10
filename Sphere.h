@@ -8,44 +8,43 @@
  * 
  */
 
-#ifndef PLANE_H
-#define PLANE_H
+#ifndef SPHERE_H
+#define SPHERE_H
 
 #include "GeometricObject.h"
 #include "mathutil.h"
-
+#include "Ray.h"
 
 /**
- * \brief An infinite plane.
- *
- * The plane is defined by it's center point and normal.
- */ 
-class Plane : public GeometricObject
+ * \brief A Sphere, inplicitly described by it's center point and radius.
+ */
+class Sphere : public GeometricObject
 {
     public:
-        Plane();
-        Plane(const Vector4d& center, const Vector4d& normal);
-        virtual ~Plane(){};
+        Sphere();
+        Sphere(const Vector4d& center, float radius);
+        virtual ~Sphere(){};
 
         virtual const Intersection intersect(const Ray& ray);
     private:
         Vector4d center;
-        Vector4d normal; 
+        float radius;
 };
 
 
-inline Plane::Plane()
+inline Sphere::Sphere()
  : GeometricObject()
  , center(Vector4d(0.0, 0.0, 0.0, 1.0))
- , normal(Vector4d(0.0, 1.0, 0.0, 0.0))
+ , radius(1.0)
 {
 }
 
-inline Plane::Plane(const Vector4d& center ,const Vector4d& normal)
+inline Sphere::Sphere(const Vector4d& center, float radius)
  : GeometricObject()
  , center(center)
- , normal(normal)
-{ 
+ , radius(radius)
+{
 }
 
-#endif //ifndef PLANE_H
+#endif //ifndef SPHERE_H
+

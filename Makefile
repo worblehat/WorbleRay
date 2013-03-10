@@ -1,4 +1,4 @@
-SOURCE=LambertMaterial.cpp main.cpp Plane.cpp SDLWindow.cpp Scene.cpp
+SOURCE=LambertMaterial.cpp main.cpp Plane.cpp SDLWindow.cpp Scene.cpp Sphere.cpp
 PROGRAM=raytracer
 C=g++
 CFLAGS_SDL=-I/usr/include/SDL -D_GNU_SOURCE=1 -D_REENTRANT

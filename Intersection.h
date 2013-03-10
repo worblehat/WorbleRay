@@ -13,6 +13,7 @@
 
 #include "GeometricObject.h"
 #include "mathutil.h"
+#include "Ray.h"
 
 
 class GeometricObject; //TODO forward declaration needed?
@@ -33,20 +34,20 @@ class Intersection
         Intersection();
         void set_exists(bool exists);
         bool get_exists() const;
-        void set_t(double t);
+        void set_t(double t); 
         double get_t() const;
-        void set_hit_backside(bool b);
-        bool get_hit_backside() const;
         void set_hit_point(const Vector4d& hit_point);
         Vector4d get_hit_point() const; 
         void set_normal(const Vector4d& normal);
         Vector4d get_normal() const;
         void set_hit_object(GeometricObject *object);
         GeometricObject *get_hit_object() const;
+        void set_incident_ray(const Ray& ray);
+        const Ray& get_incident_ray();
     private:
         bool exists;
-        bool hit_backside;
-        double t;   // Distance from view plane
+        double t;   // Distance from view plane / ray origin (TODO needed?)
+        Ray incident_ray; // Ray that intersects with the object
         Vector4d hit_point;
         Vector4d normal;
         GeometricObject* hit_object;
@@ -75,16 +76,6 @@ inline void Intersection::set_t(double t)
 inline double Intersection::get_t() const
 {
     return this->t;
-}
-
-inline void Intersection::set_hit_backside(bool b)
-{
-    hit_backside = b;
-}
-
-inline bool Intersection::get_hit_backside() const
-{
-    return hit_backside;
 }
         
 inline void Intersection::set_hit_point(const Vector4d& hit_point)
@@ -116,5 +107,16 @@ inline GeometricObject *Intersection::get_hit_object() const
 {
     return hit_object;
 }
+        
+inline void Intersection::set_incident_ray(const Ray& ray)
+{
+    incident_ray = ray;
+}
+        
+inline const Ray& Intersection::get_incident_ray()
+{
+    return incident_ray;
+}
+
 
 #endif //ifndef INTERSECTION_H
