@@ -16,7 +16,7 @@
 
 
 /*
- * \brief Simple Material that provides a flat and diffuse shading. 
+ * \brief Simple Material that provides a flat shading with lambertian illumination. 
  *
  * Uses the surface normal normal and light vectors to calculate a color value.
  */ 
@@ -28,8 +28,8 @@ class LambertMaterial : public Material
 
         virtual Color shade(const Intersection& intersection, const Scene& scene) const;
     private:
-        Color c_ambient;
-        Color c_diffuse;
+        Color c_ambient;    // Ambient color coefficient
+        Color c_diffuse;    // Diffuse color coefficient
 };
 
 inline LambertMaterial::LambertMaterial()

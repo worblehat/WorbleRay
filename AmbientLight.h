@@ -11,7 +11,15 @@
 #ifndef AMBIENTLIGHT_H
 #define AMBIENTLIGHT_H
 
+#include "Color.h"
+#include "Intersection.h"
 #include "Light.h"
+#include "mathutil.h"
+#include "Scene.h"
+
+class Intersection;
+class Light;
+class Scene;
 
 
 /**
@@ -22,42 +30,9 @@ class AmbientLight : public Light
     public:
         AmbientLight();
         AmbientLight(const Color& color, float radiance = 1.0);
-        virtual Color calc_intensity() const;        
-        void set_radiance(float r);
-        void set_color(const Color& c);
-    private:
-        float radiance;
-        Color color;
+        virtual Vector4d get_direction(const Intersection& intersection) const; 
+        virtual Color get_intensity(const Intersection& intersection, const Scene& scene) const;
 };
-
-inline AmbientLight::AmbientLight()
- : Light()
- , color(Color(1.0, 1.0, 1.0))
- , radiance(1.0)
-{
-}
-
-inline AmbientLight::AmbientLight(const Color& color, float radiance)
- : Light()
-{
-    this->color = color;
-    this->radiance = radiance;
-}
-
-inline void AmbientLight::set_radiance(float r)
-{
-    radiance = r;
-}     
-
-inline void AmbientLight::set_color(const Color& c)
-{
-    color = c;
-}
-
-inline Color AmbientLight::calc_intensity() const
-{
-    return color * radiance;
-}
 
 #endif //ifndef AMBIENTLIGHT_H
 

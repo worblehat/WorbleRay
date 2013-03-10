@@ -49,7 +49,7 @@ class Intersection
         double t;   // Distance from view plane / ray origin (TODO needed?)
         Ray incident_ray; // Ray that intersects with the object
         Vector4d hit_point;
-        Vector4d normal;
+        Vector4d normal;    // Normalized surface normal at hit point
         GeometricObject* hit_object;
 };
 
@@ -90,7 +90,7 @@ inline Vector4d Intersection::get_hit_point() const
 
 inline void Intersection::set_normal(const Vector4d& normal)
 {
-    this->normal = normal;
+    this->normal = glm::normalize(normal);
 }
 
 inline Vector4d Intersection::get_normal() const

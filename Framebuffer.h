@@ -18,7 +18,7 @@ class Framebuffer
         virtual ~Framebuffer(){};
         virtual void set_pixel(short x, short y, float r, float g, float b) = 0;
         virtual void refresh() = 0;
-    public:
+    protected:
         short width;
         short height;
 }; 

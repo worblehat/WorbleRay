@@ -32,7 +32,7 @@ class GeometricObject
         virtual const Intersection intersect(const Ray& ray) = 0;
         virtual void set_material(Material const *material);
         virtual Material const *get_material() const;
-    private:
+    protected:
         Material const *material;
 };
 

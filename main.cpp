@@ -13,6 +13,7 @@
 #include "LambertMaterial.h"
 #include "mathutil.h"
 #include "Plane.h"
+#include "PointLight.h"
 #include "Ray.h"
 #include "SDLWindow.h"
 #include "Scene.h"
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
     Sphere *sphere = new Sphere(Vector4d(0.0, 0.0, 0.0, 1.0), 25.0);
 
     // Specify materials
-    LambertMaterial *flat_lambert = new LambertMaterial(Color(0.5f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
+    LambertMaterial *flat_lambert = new LambertMaterial(Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
     plane->set_material(flat_lambert);
     sphere->set_material(flat_lambert);
 
@@ -52,8 +53,10 @@ int main(int argc, char *argv[])
     scene.add_object(sphere);
 
     // Set light sources
-    AmbientLight *ambient_light = new AmbientLight(Color(0.5f, 0.5f, 0.5f), 1.0f);
+    AmbientLight *ambient_light = new AmbientLight(Color(0.2f, 0.2f, 0.2f), 1.0f);
+    PointLight *point_light = new PointLight(Vector4d(50.0f, 100.0f, 100.0f, 1.0f), Color(0.6f, 0.6f, 0.6f));
     scene.set_ambient_light(ambient_light);
+    scene.set_ambient_light(point_light);
 
     // Define render window
     Framebuffer *window = new SDLWindow(width, height);
@@ -71,7 +74,6 @@ int main(int argc, char *argv[])
             float pixel_size = 1.0f;
             float r_x = pixel_size * (x - width / 2.0 + 0.5f);
             float r_y = pixel_size * (y - height / 2.0 + 0.5f);
-            std::cout << r_x << std::endl;
             float view_z = 100.0f;
             // Orthographic view:
             ray.set_origin(Vector4d(r_x, r_y, view_z, 1.0));
@@ -83,7 +85,6 @@ int main(int argc, char *argv[])
             // Shade intersction point
             if(intersection.get_exists())
             {
-               std::cout << "(" << x << "," << y << ") True" << std::endl;
                pixel_color = intersection.get_hit_object()->get_material()->shade(intersection, scene);
             }    
             else

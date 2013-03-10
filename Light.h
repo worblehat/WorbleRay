@@ -12,7 +12,12 @@
 #define LIGHT_H
 
 #include "Color.h"
+#include "Intersection.h"
+#include "mathutil.h"
+#include "Scene.h"
 
+class Intersection;
+class Scene;    //TODO needed?
 
 /**
  * \brief Abstract base class for lights.
@@ -20,8 +25,41 @@
 class Light
 {
     public:
+        Light();
+        Light(const Color& color, float radiance = 1.0);
         virtual ~Light(){};
-        virtual Color calc_intensity() const = 0;        
+        /**
+         * Get the normalized direction, used as "light vector" in shading calculations."
+         */
+        virtual Vector4d get_direction(const Intersection& intersection) const = 0; 
+        virtual Color get_intensity(const Intersection& intersection, const Scene& scene) const = 0;        
+        virtual void set_radiance(float r);
+        virtual void set_color(const Color& c);
+    protected:
+        float radiance;
+        Color color;
 };
+
+inline Light::Light()
+ : color(Color(1.0, 1.0, 1.0))
+, radiance(1.0)
+{
+}
+
+inline Light::Light(const Color& color, float radiance)
+ : color(color)
+ , radiance(radiance)
+{
+}
+
+inline void Light::set_radiance(float r)
+{
+    radiance = r;
+}     
+
+inline void Light::set_color(const Color& c)
+{
+    color = c;
+}
 
 #endif //ifndef LIGHT_H

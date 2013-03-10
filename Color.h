@@ -30,6 +30,10 @@ class Color
         Color operator+(const Color& c) const;
         Color& operator-(const Color& c);
         Color operator-(const Color& c) const;
+        Color& operator+=(const Color& c);
+        Color& operator-=(const Color& c);
+        Color& operator*(const Color& c);
+        Color operator*(const Color& c) const;
         Color& operator+(float f);
         Color operator+(float f) const;
         Color& operator-(float f);
@@ -75,6 +79,35 @@ inline Color& Color::operator+(const Color& c)
 inline Color Color::operator+(const Color& c) const
 {
     return Color(r + c.get_r(), g + c.get_g(), b + c.get_b());
+}
+
+inline Color& Color::operator+=(const Color& c)
+{
+    r += c.get_r();
+    g += c.get_g();
+    b += c.get_b();
+    return *this;
+}
+
+inline Color& Color::operator-=(const Color& c)
+{
+    r -= c.get_r();
+    g -= c.get_g();
+    b -= c.get_b();
+    return *this;
+}
+
+inline Color& Color::operator*(const Color& c)
+{
+    r *= c.get_r();
+    g *= c.get_g();
+    b *= c.get_b();
+    return *this;
+}
+    
+inline Color Color::operator*(const Color& c) const
+{
+    return Color(r * c.get_r(), g * c.get_g(), b * c.get_b());
 }
 
 inline Color& Color::operator-(const Color& c)

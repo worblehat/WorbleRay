@@ -15,8 +15,9 @@
 #include "Intersection.h"
 #include "Scene.h"
 
-//TODO fortward declaration necessary here?
+//TODO fortward declarations necessary here?
 class Scene;
+class Intersection;
 
 /**
  * \brief Abstract base class for Materials that are able to shade an intersection point.
