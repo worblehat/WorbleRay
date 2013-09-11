@@ -13,9 +13,9 @@
 
 #include <glm/glm.hpp>
 
-#define Vector4d glm::dvec4 
-#define Vector4f glm::vec4
-#define Matrix4d glm::dmat4
-#define Matrix4f glm::mat4
+typedef glm::dvec4 Vector4d;
+typedef glm::vec4 Vector4f;
+typedef glm::dmat4 Matrix4d;
+typedef glm::mat4 Matrix4f;
 
 #endif //ifndef MATHUTIL_H
