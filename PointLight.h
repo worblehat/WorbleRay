@@ -12,8 +12,10 @@
 #define POINTLIGHT_H
 
 #include "Color.h"
+#include "Intersection.h"
 #include "Light.h"
 #include "mathutil.h"
+#include "Scene.h"
 
 class PointLight : public Light
 {

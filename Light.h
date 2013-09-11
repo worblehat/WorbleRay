@@ -32,6 +32,8 @@ class Light
          * Get the normalized direction, used as "light vector" in shading calculations."
          */
         virtual Vector4d get_direction(const Intersection& intersection) const = 0; 
+        //TODO intersection and scene needed here? Try to eliminate this to avoid circular dependecy
+        //      between Light and Scene
         virtual Color get_intensity(const Intersection& intersection, const Scene& scene) const = 0;        
         virtual void set_radiance(float r);
         virtual void set_color(const Color& c);

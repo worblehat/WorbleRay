@@ -17,11 +17,6 @@
 #include "mathutil.h"
 #include "Scene.h"
 
-class Intersection;
-class Light;
-class Scene;
-
-
 /**
  * \brief Ambient light source without position and direction.
  */

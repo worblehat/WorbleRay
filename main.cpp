@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     AmbientLight *ambient_light = new AmbientLight(Color(0.2f, 0.2f, 0.2f), 1.0f);
     PointLight *point_light = new PointLight(Vector4d(50.0f, 100.0f, 100.0f, 1.0f), Color(0.6f, 0.6f, 0.6f));
     scene.set_ambient_light(ambient_light);
-    scene.set_ambient_light(point_light);
+    scene.add_light(point_light);
 
     // Define render window
     Framebuffer *window = new SDLWindow(width, height);

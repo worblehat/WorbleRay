@@ -11,7 +11,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-//#include "AmbientLight.h"
+#include "AmbientLight.h"
 #include "Camera.h"
 #include "Color.h"
 #include "GeometricObject.h"
@@ -25,7 +25,7 @@
 class GeometricObject; //TODO forward declaration needed here?
 class Intersection; //TODO forward declaration needed here?
 class Light; //TODO forward declaration needed here?
-//class AmbientLight; //TODO forward declaration needed here?
+class AmbientLight; //TODO forward declaration needed here?
 
 /**
  * \brief Description of a 3D Scene.
@@ -40,8 +40,8 @@ class Scene
         void add_object(GeometricObject *object);
         void add_light(Light* light);
         const std::vector<Light*> get_lights() const;
-        void set_ambient_light(Light* light);   //TODO should be AmbientLight
-        Light* get_ambient_light() const;       //TODO should be AmbientLight 
+        void set_ambient_light(AmbientLight* light);   //TODO should be AmbientLight
+        AmbientLight* get_ambient_light() const;       //TODO should be AmbientLight 
         void set_camera(Camera* camera);
         void set_background(const Color& bg_color);
         const Color& get_background() const;
@@ -49,7 +49,7 @@ class Scene
     private:
         std::vector<GeometricObject*> objects;
         std::vector<Light*> lights;
-        Light *ambient_light;   //TODO should be AmbientLight
+        AmbientLight *ambient_light;   //TODO should be AmbientLight
         Camera *camera;
         Color bg_color;
 };
@@ -65,7 +65,7 @@ inline void Scene::add_light(Light* light)
     lights.push_back(light);
 }
         
-inline void Scene::set_ambient_light(Light* light)
+inline void Scene::set_ambient_light(AmbientLight* light)
 {
    ambient_light = light; 
 }
@@ -90,7 +90,7 @@ inline const std::vector<Light*> Scene::get_lights() const
     return lights;
 }
         
-inline Light* Scene::get_ambient_light() const
+inline AmbientLight* Scene::get_ambient_light() const
 {
     return ambient_light;
 }
