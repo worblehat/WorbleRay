@@ -15,7 +15,7 @@
 
 const Intersection Sphere::intersect(const Ray& ray)
 {
-    // An intersection between a ray and sphere can be described by to different vector pathes, which
+    // An intersection between a ray and sphere can be described by two different vector paths, which
     // are therefore equal:
     // Ray.origin + t * Ray.direction = Sphere.center + Q
     // where Q is a vector from the spheres center to the sphere surface with length = Sphere.radius 

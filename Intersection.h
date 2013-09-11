@@ -22,8 +22,8 @@ class GeometricObject; //TODO forward declaration needed?
 /**
  * \brief This class represents the result of an intersection test between a Ray and a GeometricObject.
  *
- * Before reading any of the data members you should check if there exists and intersection. 
- * If the intersectino does not exists (i.e. the Ray did not hit the GeometricObject), the 
+ * Before reading any of the data members you should check if there exists an intersection. 
+ * If the intersection does not exists (i.e. the Ray did not hit the GeometricObject), the 
  * data returned by the other get-functions is undefined.
  *
  * \see Intersection::get_exists()

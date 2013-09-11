@@ -18,7 +18,7 @@
 /*
  * \brief Simple Material that provides a flat shading with lambertian illumination. 
  *
- * Uses the surface normal normal and light vectors to calculate a color value.
+ * Uses the surface normal and light vectors to calculate a color value.
  */ 
 class LambertMaterial : public Material
 {
