@@ -23,10 +23,14 @@ Color LambertMaterial::shade(const Intersection& intersection, const Scene& scen
     const std::vector<Light*> lights = scene.get_lights();
     for(it = lights.begin(); it != lights.end(); ++it)
     {
-        Color diffuse_light = (*it)->get_intensity(intersection, scene);
         Vector4d n = intersection.get_normal();
-        Vector4d l = (*it)->get_direction(intersection);
-        intensity_diffuse += diffuse_light * c_diffuse * glm::dot(n, l);
+        Vector4d l = -1 * (*it)->get_direction(intersection);
+        float dot = glm::dot(n, l);
+        if(dot > 0.0f) 
+        {
+            Color diffuse_light = (*it)->get_intensity(intersection, scene);
+            intensity_diffuse += diffuse_light * c_diffuse * dot;
+        }
     }
     intensity += intensity_diffuse;
 
