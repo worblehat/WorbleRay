@@ -9,5 +9,8 @@ all: $(PROGRAM)
 $(PROGRAM): $(SOURCE)
 	$(C) $(SOURCE) -o$(PROGRAM) $(LIBFLAGS_SDL) $(CFLAGS_SDL)
 
+debug: $(SOURCE)
+	$(C) $(SOURCE) -g -o$(PROGRAM) $(LIBFLAGS_SDL) $(CGLAFS_SDL)
+
 clean:
 	rm -rf *.o raytracer

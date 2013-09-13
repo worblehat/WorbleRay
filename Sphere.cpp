@@ -15,25 +15,27 @@
 
 const Intersection Sphere::intersect(const Ray& ray)
 {
-    // An intersection between a ray and sphere can be described by two different vector paths, which
-    // are therefore equal:
-    // Ray.origin + t * Ray.direction = Sphere.center + Q
-    // where Q is a vector from the spheres center to the sphere surface with length = Sphere.radius 
-    // This forumla can be rearranged to a quadratic equation for t:
-    // a * t^1 + b * t + c = 0
-    // where
-    // a = Ray.direction * Ray.direction    (if direction is normalized: a = 1)
-    // b = 2 * Ray.direction * (Ray.origin - Sphere.center)
-    // c = (Ray.origin - Sphere.center) * (Ray.origin - Sphere.center) - (Sphere.radius)^2
-    // After solving the quation for t to
-    // t = (-b +- sqrt(b^2 -4ac)) / (2a)
-    // only the following part of it's determinant is interesting to
-    // determine how many intersection points exist:
-    // d = b^2 - 4ac
-    // d < 0: no intersection
-    // d = 0: one intersection
-    // d > 0: two intersections 
-    // If d >= 0 we need to calculate t to check if the ray starts before, inside or after the sphere.
+    /*
+     * An intersection between a ray and sphere can be described by two different vector paths, which
+     * are therefore equal:
+     * Ray.origin + t * Ray.direction = Sphere.center + Q
+     * where Q is a vector from the spheres center to the sphere surface with length = Sphere.radius 
+     * This forumla can be rearranged to a quadratic equation for t:
+     * a * t^1 + b * t + c = 0
+     * where
+     * a = Ray.direction * Ray.direction    (if direction is normalized: a = 1)
+     * b = 2 * Ray.direction * (Ray.origin - Sphere.center)
+     * c = (Ray.origin - Sphere.center) * (Ray.origin - Sphere.center) - (Sphere.radius)^2
+     * After solving the quation for t to
+     * t = (-b +- sqrt(b^2 -4ac)) / (2a)
+     * only the following part of it's determinant is interesting to
+     * determine how many intersection points exist:
+     * d = b^2 - 4ac
+     * d < 0: no intersection
+     * d = 0: one intersection
+     * d > 0: two intersections 
+     * If d >= 0 we need to calculate t to check if the ray starts before, inside or after the sphere.
+     */
 
     Intersection intersection;
     intersection.set_exists(false);

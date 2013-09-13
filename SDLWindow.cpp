@@ -16,8 +16,6 @@
 SDLWindow::SDLWindow(short width, short height)
  : Framebuffer(width, height)
 {
-    this->width = width;
-    this->height = height;
     // Init SDL
     if(SDL_Init(SDL_INIT_VIDEO) == -1)
     {
