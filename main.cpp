@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     
     // Define objects
     Plane *plane = new Plane(Vector4d(0.0, 0.0, 0.0, 1.0), Vector4d(0.0, 0.0, 1.0, 0.0));
-    Sphere *sphere = new Sphere(Vector4d(0.0, 0.0, 0.0, 1.0), 25.0);
+    Sphere *sphere = new Sphere(Vector4d(0.0, 0.0, 0.0, 1.0), 100.0);
 
     // Specify materials
     LambertMaterial *flat_lambert = new LambertMaterial(Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
@@ -54,7 +54,7 @@ int main(int argc, char *argv[])
 
     // Set light sources
     AmbientLight *ambient_light = new AmbientLight(Color(0.2f, 0.2f, 0.2f), 1.0f);
-    PointLight *point_light = new PointLight(Vector4d(50.0f, 100.0f, 100.0f, 1.0f), Color(0.6f, 0.6f, 0.6f));
+    PointLight *point_light = new PointLight(Vector4d(100.0f, 100.0f, 100.0f, 1.0f), Color(0.6f, 0.6f, 0.6f));
     scene.set_ambient_light(ambient_light);
     scene.add_light(point_light);
 
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
             // TODO Remove and rewrite this later:
             float pixel_size = 1.0f;
             float r_x = pixel_size * (x - width / 2.0 + 0.5f);
-            float r_y = pixel_size * (y - height / 2.0 + 0.5f);
+            float r_y = pixel_size * -(y - height / 2.0 + 0.5f);
             float view_z = 100.0f;
             // Orthographic view:
             ray.set_origin(Vector4d(r_x, r_y, view_z, 1.0));
