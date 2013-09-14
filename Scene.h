@@ -11,21 +11,20 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "AmbientLight.h"
-#include "Camera.h"
+//#include "AmbientLight.h"
+//#include "Camera.h"
 #include "Color.h"
 #include "GeometricObject.h"
 #include "Intersection.h"
-#include "Light.h"
-#include "Ray.h"
+//#include "Light.h"
+//#include "Ray.h"
 
 #include <vector>
 
-
-class GeometricObject; //TODO forward declaration needed here?
-class Intersection; //TODO forward declaration needed here?
-class Light; //TODO forward declaration needed here?
-class AmbientLight; //TODO forward declaration needed here?
+class AmbientLight;
+class Camera;
+class Light;
+class Ray;
 
 /**
  * \brief Description of a 3D Scene.
@@ -40,8 +39,8 @@ class Scene
         void add_object(GeometricObject *object);
         void add_light(Light* light);
         const std::vector<Light*> get_lights() const;
-        void set_ambient_light(AmbientLight* light);   //TODO should be AmbientLight
-        AmbientLight* get_ambient_light() const;       //TODO should be AmbientLight 
+        void set_ambient_light(AmbientLight* light); 
+        AmbientLight* get_ambient_light() const;    
         void set_camera(Camera* camera);
         void set_background(const Color& bg_color);
         const Color& get_background() const;
@@ -49,7 +48,7 @@ class Scene
     private:
         std::vector<GeometricObject*> objects;
         std::vector<Light*> lights;
-        AmbientLight *ambient_light;   //TODO should be AmbientLight
+        AmbientLight *ambient_light;   
         Camera *camera;
         Color bg_color;
 };

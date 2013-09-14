@@ -12,10 +12,7 @@
 #define MATERIAL_H
 
 #include "Color.h"
-#include "Intersection.h"
-#include "Scene.h"
 
-//TODO fortward declarations necessary here?
 class Scene;
 class Intersection;
 

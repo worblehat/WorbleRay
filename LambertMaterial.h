@@ -12,8 +12,9 @@
 #define LAMBERTMATERIAL_H
 
 #include "Color.h"
+#include "Intersection.h"
 #include "Material.h"
-
+#include "Scene.h"
 
 /*
  * \brief Simple Material that provides a flat shading with lambertian illumination. 

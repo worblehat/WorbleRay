@@ -12,6 +12,7 @@
 #define SPHERE_H
 
 #include "GeometricObject.h"
+#include "Intersection.h"
 #include "mathutil.h"
 #include "Ray.h"
 

@@ -11,13 +11,9 @@
 #ifndef GEOMETRIC_OBJECT_H
 #define GEOMETRIC_OBJECT_H
 
-#include "Intersection.h"
-#include "Material.h"
-#include "Ray.h"
-
-
-class Material; //TODO needed?
-class Intersection; //TODO needed?
+class Intersection;
+class Material; 
+class Ray; 
 
 /**
  * \brief Abstract base class for geometric objects that can be rendered to the screen.

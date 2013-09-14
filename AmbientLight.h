@@ -15,7 +15,6 @@
 #include "Intersection.h"
 #include "Light.h"
 #include "mathutil.h"
-#include "Scene.h"
 
 /**
  * \brief Ambient light source without position and direction.
@@ -26,7 +25,7 @@ class AmbientLight : public Light
         AmbientLight();
         AmbientLight(const Color& color, float radiance = 1.0);
         virtual Vector4d get_direction(const Intersection& intersection) const; 
-        virtual Color get_intensity(const Intersection& intersection, const Scene& scene) const;
+        virtual Color get_intensity() const;
 };
 
 #endif //ifndef AMBIENTLIGHT_H

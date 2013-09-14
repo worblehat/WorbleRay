@@ -26,7 +26,7 @@ Vector4d AmbientLight::get_direction(const Intersection& intersection) const
     return Vector4d(0.0, 0.0, 0.0, 0.0);
 }
 
-Color AmbientLight::get_intensity(const Intersection& intersection, const Scene& scene) const
+Color AmbientLight::get_intensity() const
 {
     return color * radiance;
 }

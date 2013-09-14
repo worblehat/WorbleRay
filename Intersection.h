@@ -11,13 +11,10 @@
 #ifndef INTERSECTION_H
 #define INTERSECTION_H
 
-#include "GeometricObject.h"
 #include "mathutil.h"
 #include "Ray.h"
 
-
-class GeometricObject; //TODO forward declaration needed?
-
+class GeometricObject;
 
 /**
  * \brief This class represents the result of an intersection test between a Ray and a GeometricObject.
