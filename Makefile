@@ -10,7 +10,7 @@ $(PROGRAM): $(SOURCE)
 	$(CC) $(SOURCE) -Wall -O3 -o$(PROGRAM) $(LIBFLAGS_SDL) $(CFLAGS_SDL)
 
 debug: $(SOURCE)
-	$(CC) $(SOURCE) -Wall -O0 -g -o$(PROGRAM) $(LIBFLAGS_SDL) $(CGLAFS_SDL)
+	$(CC) $(SOURCE) -Wall -O0 -g -o$(PROGRAM) $(LIBFLAGS_SDL) $(CFLAGS_SDL)
 
 clean:
 	rm -rf *.o raytracer
