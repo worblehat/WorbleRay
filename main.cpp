@@ -2,6 +2,7 @@
 #include "AmbientLight.h"
 #include "Intersection.h"
 #include "LambertMaterial.h"
+#include "OrthographicCamera.h"
 #include "mathutil.h"
 #include "Plane.h"
 #include "PointLight.h"
@@ -56,23 +57,18 @@ int main(int argc, char *argv[])
 
     Ray ray;
     Color pixel_color;
+    OrthographicCamera camera;
+    camera.set_position(Vector4f(0.0f, 0.0f, 100.f, 1.0f));
+    camera.set_look_at(Vector4f(0.0f, 0.0f, -1.0, 0.0f));
+    camera.set_up_vector(Vector4f(0.0f, 1.0f, 0.0f, 0.0f));
+    camera.set_resolution(width, height);
+    camera.set_pixel_size(1.0f);
     // For each pixel
     for(short y = 0; y < height; ++y)
     {
         for(short x = 0; x < width; ++x)
         {
-            // Create ray through pixel 
-            // TODO maybe member function of Camera?
-            // TODO Remove and rewrite this later:
-            float pixel_size = 1.0f;
-            float r_x = pixel_size * (x - width / 2.0 + 0.5f);
-            float r_y = pixel_size * -(y - height / 2.0 + 0.5f);
-            float view_z = 100.0f;
-            // Orthographic view:
-            ray.set_origin(Vector4d(r_x, r_y, view_z, 1.0));
-            ray.set_direction(Vector4d(0.0, 0.0, -1.0, 0.0));
-
-            // Trace ray
+            ray = camera.createRay(x, y);
             Intersection intersection = scene.trace(ray);
 
             // Shade intersction point
