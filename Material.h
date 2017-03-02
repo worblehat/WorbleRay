@@ -8,7 +8,8 @@ class Scene;
 class Intersection;
 
 /**
- * \brief Abstract base class for Materials that are able to shade an intersection point.
+ * \brief Abstract base class for materials that are able to calculate the shading of an
+ *        object at a ray-intersection point.
  */
 class Material
 {

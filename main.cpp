@@ -28,13 +28,14 @@ int main(int argc, char *argv[])
         std::cout << "ERROR: wrong number of command line arguments" << std::endl;
         exit(1);
     }
-    
+
     // Define objects
     Plane *plane = new Plane(Vector4d(0.0, 0.0, 0.0, 1.0), Vector4d(0.0, 0.0, 1.0, 0.0));
     Sphere *sphere = new Sphere(Vector4d(0.0, 0.0, 0.0, 1.0), 100.0);
 
     // Specify materials
-    LambertMaterial *flat_lambert = new LambertMaterial(Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
+    LambertMaterial *flat_lambert =
+      new LambertMaterial(Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
     plane->set_material(flat_lambert);
     sphere->set_material(flat_lambert);
 
@@ -45,13 +46,14 @@ int main(int argc, char *argv[])
 
     // Set light sources
     AmbientLight *ambient_light = new AmbientLight(Color(0.2f, 0.2f, 0.2f), 1.0f);
-    PointLight *point_light = new PointLight(Vector4d(100.0f, 100.0f, 100.0f, 1.0f), Color(0.6f, 0.6f, 0.6f));
+    PointLight *point_light =
+      new PointLight(Vector4d(100.0f, 100.0f, 100.0f, 1.0f), Color(0.6f, 0.6f, 0.6f));
     scene.set_ambient_light(ambient_light);
     scene.add_light(point_light);
 
     // Define render window
     Framebuffer *window = new SDLWindow(width, height);
-    
+
     Ray ray;
     Color pixel_color;
     // For each pixel
@@ -69,20 +71,21 @@ int main(int argc, char *argv[])
             // Orthographic view:
             ray.set_origin(Vector4d(r_x, r_y, view_z, 1.0));
             ray.set_direction(Vector4d(0.0, 0.0, -1.0, 0.0));
-            
-            // Trace ray 
+
+            // Trace ray
             Intersection intersection = scene.trace(ray);
 
             // Shade intersction point
             if(intersection.get_exists())
             {
-               pixel_color = intersection.get_hit_object()->get_material()->shade(intersection, scene);
-            }    
+               const Material *material = intersection.get_hit_object()->get_material();
+               pixel_color = material->shade(intersection, scene);
+            }
             else
             {
-               pixel_color = scene.get_background(); 
+               pixel_color = scene.get_background();
             }
-            
+
             // Set pixel color
             window->set_pixel(x, y, pixel_color.get_r(), pixel_color.get_g(), pixel_color.get_b());
         }

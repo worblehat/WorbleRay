@@ -17,10 +17,11 @@ class Light
         Light(const Color& color, float radiance = 1.0);
         virtual ~Light(){};
         /**
-         * Get the normalized direction, used as "light vector" in shading calculations."
+         * \brief Get the normalized incomming direction of the light at an intersection point.
+         * Used as "light vector" in shading calculations."
          */
-        virtual Vector4d get_direction(const Intersection& intersection) const = 0; 
-        virtual Color get_intensity() const = 0;        
+        virtual Vector4d get_direction(const Intersection& intersection) const = 0;
+        virtual Color get_intensity() const = 0;
         virtual void set_radiance(float r);
         virtual void set_color(const Color& c);
     protected:
@@ -43,7 +44,7 @@ inline Light::Light(const Color& color, float radiance)
 inline void Light::set_radiance(float r)
 {
     radiance = r;
-}     
+}
 
 inline void Light::set_color(const Color& c)
 {
