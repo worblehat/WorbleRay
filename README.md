@@ -1,6 +1,7 @@
 WorbleRay, a simple ray tracer.
 
 Dependencies:
+
 * SDL (Simple Direct Media Layer)
 * GLM (OpenGL Mathematics)
 
