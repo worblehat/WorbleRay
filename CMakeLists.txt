@@ -12,10 +12,12 @@ add_executable(${PROJECT_NAME}
     main.cpp
     OrthographicCamera.cpp
     Plane.cpp
+    PointD.cpp
     PointLight.cpp
     SDLWindow.cpp
     Scene.cpp
     Sphere.cpp
+    VectorD.cpp
     NOTES.md
     README.md
 )
