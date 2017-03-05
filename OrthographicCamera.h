@@ -3,6 +3,9 @@
 
 #include "Camera.h"
 
+/**
+ * @brief TODO doc: camera position at center of view-plane
+ */
 class OrthographicCamera : public Camera
 {
     public:

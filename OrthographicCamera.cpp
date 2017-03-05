@@ -28,23 +28,10 @@ Ray OrthographicCamera::createRay(int x, int y) const
   // Pixel position in world space
   Vector4f pixel_pos = v_origin + (v_right * n_x) + (v_down * n_y);
   // Adjust to center of pixel
-  pixel_pos.x += pixel_size / 2.0f;
-  pixel_pos.y -= pixel_size / 2.0f;
+  v_right = glm::normalize(v_right);
+  v_down = glm::normalize(v_down);
+  pixel_pos += v_right * (pixel_size / 2.0f) + v_down * (pixel_size / 2.0f);
   ray.set_origin(pixel_pos);
 
-  /* TODO Test
-  std::cout << glm::to_string(position) << std::endl;
-  std::cout << glm::to_string(look_at) << std::endl;
-  std::cout << glm::to_string(up) << std::endl;
-  std::cout << view_w << "x" << view_h << std::endl;
-  std::cout << glm::to_string(v_down) << std::endl;
-  std::cout << glm::to_string(v_right) << std::endl;
-  std::cout << glm::to_string(v_origin) << std::endl;
-  std::cout << n_x << "x" << n_y << std::endl;
-  std::cout << glm::to_string(pixel_pos) << std::endl;
-  std::cout << "---" << std::endl;
-  std::cout << glm::to_string(ray.get_origin()) << std::endl;
-  std::cout << glm::to_string(ray.get_direction()) << std::endl;
-  */
   return ray;
 }
