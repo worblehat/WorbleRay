@@ -23,6 +23,7 @@ class Ray;
  * GeometricObjects, Lights and Cameras can be placed in the scene. In addition the scene has background
  * color and an ambient light intensity.
  * The Scene is able to trace Rays and determine Intersections with GeometricObjects in the Scene.
+ * A right-handed coordinate system is used.
  */
 class Scene
 {

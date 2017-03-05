@@ -16,6 +16,8 @@ add_executable(${PROJECT_NAME}
     SDLWindow.cpp
     Scene.cpp
     Sphere.cpp
+    NOTES.md
+    README.md
 )
 
 find_package(glm REQUIRED)

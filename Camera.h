@@ -6,7 +6,8 @@
 #include "Ray.h"
 
 /**
- * TODO doc camera and view, origin top-left corner, x/y zero-based
+ * TODO doc camera and view, origin top-left corner, x/y zero-based,
+ *          up-vector and look-at must be perpendicular
  */
 class Camera
 {
