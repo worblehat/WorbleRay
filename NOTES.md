@@ -3,9 +3,11 @@
 * point-, vector-, normal-classes (eliminate glm-dependency)
 * consistent coding-style (whitespaces, inlining, references...)
 * perspective camera
+* handling Window-events
 * debug-utilities (including vector-printing)
 * Phong-material
 * plane-intersection
+* progressive raytracing for early feedback
 * directional light
 * area light
 * use float instead of double where appropriate
