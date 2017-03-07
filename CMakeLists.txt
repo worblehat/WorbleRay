@@ -7,17 +7,33 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(${PROJECT_NAME}
     AmbientLight.cpp
+    AmbientLight.h
     Camera.cpp
+    Camera.h
+    Color.h
+    Framebuffer.h
     LambertMaterial.cpp
+    LambertMaterial.h
+    Light.h
     main.cpp
+    Material.h
     OrthographicCamera.cpp
+    OrthographicCamera.h
     Plane.cpp
+    Plane.h
     PointD.cpp
+    PointD.h
     PointLight.cpp
+    PointLight.h
+    Ray.h
     SDLWindow.cpp
+    SDLWindow.h
     Scene.cpp
+    Scene.h
     Sphere.cpp
+    Sphere.h
     VectorD.cpp
+    VectorD.h
     NOTES.md
     README.md
 )
