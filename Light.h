@@ -3,7 +3,7 @@
 #define LIGHT_H
 
 #include "Color.h"
-#include "mathutil.h"
+#include "VectorD.h"
 
 class Intersection;
 
@@ -20,7 +20,7 @@ class Light
          * \brief Get the normalized incomming direction of the light at an intersection point.
          * Used as "light vector" in shading calculations."
          */
-        virtual Vector4d get_direction(const Intersection& intersection) const = 0;
+        virtual VectorD get_direction(const Intersection& intersection) const = 0;
         virtual Color get_intensity() const = 0;
         virtual void set_radiance(float r);
         virtual void set_color(const Color& c);

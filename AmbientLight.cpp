@@ -12,9 +12,9 @@ AmbientLight::AmbientLight(const Color& color, float radiance)
 {
 }
 
-Vector4d AmbientLight::get_direction(const Intersection& intersection) const
+VectorD AmbientLight::get_direction(const Intersection& intersection) const
 {
-    return Vector4d(0.0, 0.0, 0.0, 0.0);
+    return VectorD(0.0, 0.0, 0.0);
 }
 
 Color AmbientLight::get_intensity() const

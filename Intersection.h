@@ -2,8 +2,9 @@
 #ifndef INTERSECTION_H
 #define INTERSECTION_H
 
-#include "mathutil.h"
+#include "PointD.h"
 #include "Ray.h"
+#include "VectorD.h"
 
 class GeometricObject;
 
@@ -24,10 +25,10 @@ class Intersection
         bool get_exists() const;
         void set_t(double t); 
         double get_t() const;
-        void set_hit_point(const Vector4d& hit_point);
-        Vector4d get_hit_point() const; 
-        void set_normal(const Vector4d& normal);
-        Vector4d get_normal() const;
+        void set_hit_point(const PointD& hit_point);
+        PointD get_hit_point() const;
+        void set_normal(const VectorD& normal);
+        VectorD get_normal() const;
         void set_hit_object(GeometricObject *object);
         GeometricObject *get_hit_object() const;
         void set_incident_ray(const Ray& ray);
@@ -36,8 +37,8 @@ class Intersection
         bool exists;
         double t;   // Distance from view plane / ray origin (TODO needed?)
         Ray incident_ray; // Ray that intersects with the object
-        Vector4d hit_point;
-        Vector4d normal;    // Normalized surface normal at hit point
+        PointD hit_point;
+        VectorD normal;    // Normalized surface normal at hit point
         GeometricObject* hit_object;
 };
 
@@ -66,22 +67,23 @@ inline double Intersection::get_t() const
     return this->t;
 }
         
-inline void Intersection::set_hit_point(const Vector4d& hit_point)
+inline void Intersection::set_hit_point(const PointD& hit_point)
 {
     this->hit_point = hit_point;
 }
 
-inline Vector4d Intersection::get_hit_point() const
+inline PointD Intersection::get_hit_point() const
 {
     return hit_point;
 }
 
-inline void Intersection::set_normal(const Vector4d& normal)
+inline void Intersection::set_normal(const VectorD& normal)
 {
-    this->normal = glm::normalize(normal);
+    this->normal = normal;
+    this->normal.normalize();
 }
 
-inline Vector4d Intersection::get_normal() const
+inline VectorD Intersection::get_normal() const
 {
     return normal;
 }

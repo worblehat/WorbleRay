@@ -1,5 +1,6 @@
 
 #include "Sphere.h"
+#include "VectorD.h"
 
 #include <cmath>
 #include <iostream>
@@ -33,14 +34,14 @@ const Intersection Sphere::intersect(const Ray& ray)
     intersection.set_incident_ray(ray);
     double t;
     double radius = this->radius; 
-    Vector4d origin = ray.get_origin();
-    Vector4d center = this->center; 
-    Vector4d dir = ray.get_direction();
+    PointD origin = ray.get_origin();
+    PointD center = this->center;
+    VectorD dir = ray.get_direction();
     // Precalculations
-    Vector4d ray_sphere_diff = origin - center; 
-    double a = glm::dot(dir, dir);
-    double b = 2 * glm::dot(dir, ray_sphere_diff);
-    double c = glm::dot(ray_sphere_diff, ray_sphere_diff) - std::pow(radius, 2);
+    VectorD ray_sphere_diff = origin - center;
+    double a = dir.dot(dir);
+    double b = 2 * dir.dot(ray_sphere_diff);
+    double c = ray_sphere_diff.dot(ray_sphere_diff) - std::pow(radius, 2);
     double d = std::pow(b, 2) - 4 * a * c;
     // At least one intersection 
     if(d >= 0)
@@ -55,7 +56,7 @@ const Intersection Sphere::intersect(const Ray& ray)
             intersection.set_exists(true);
             intersection.set_t(t);
             // Calculate intersection point
-            Vector4d hit_point = origin + t * dir;
+            PointD hit_point = origin + t * dir;
             intersection.set_hit_point(hit_point);
             // Calculate normal at intersection point
             intersection.set_normal(hit_point - center); //TODO Test!

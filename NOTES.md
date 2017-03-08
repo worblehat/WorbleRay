@@ -1,7 +1,7 @@
 # To Do
 
 * point-, vector-, normal-classes (eliminate glm-dependency)
-* consistent coding-style (whitespaces, inlining, references...)
+* consistent coding-style (whitespaces, inlining, references, clean up include...)
 * perspective camera
 * debug-utilities (including vector-printing)
 * Phong-material

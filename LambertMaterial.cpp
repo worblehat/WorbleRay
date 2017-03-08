@@ -1,8 +1,9 @@
 
-#include "LambertMaterial.h"
 
 #include "AmbientLight.h"
+#include "LambertMaterial.h"
 #include "Light.h"
+#include "VectorD.h"
 
 #include <iostream>
 #include <vector>
@@ -23,9 +24,9 @@ Color LambertMaterial::shade(const Intersection& intersection, const Scene& scen
     Color intensity_diffuse;
     for(Light* light : scene.get_lights())
     {
-        Vector4d n = intersection.get_normal();
-        Vector4d l = -1.0 * light->get_direction(intersection);
-        float dot = glm::dot(n, l);
+        VectorD n = intersection.get_normal();
+        VectorD l = -1.0 * light->get_direction(intersection);
+        float dot = n.dot(l);
         if(dot > 0.0f)
         {
             intensity_diffuse += light->get_intensity() * c_diffuse * dot;

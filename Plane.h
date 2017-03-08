@@ -4,8 +4,9 @@
 
 #include "GeometricObject.h"
 #include "Intersection.h"
-#include "mathutil.h"
+#include "PointD.h"
 #include "Ray.h"
+#include "VectorD.h"
 
 
 /**
@@ -17,24 +18,24 @@ class Plane : public GeometricObject
 {
     public:
         Plane();
-        Plane(const Vector4d& center, const Vector4d& normal);
+        Plane(const PointD& center, const VectorD& normal);
         virtual ~Plane(){};
 
         virtual const Intersection intersect(const Ray& ray);
     private:
-        Vector4d center;
-        Vector4d normal; 
+        PointD center;
+        VectorD normal;
 };
 
 
 inline Plane::Plane()
  : GeometricObject()
- , center(Vector4d(0.0, 0.0, 0.0, 1.0))
- , normal(Vector4d(0.0, 1.0, 0.0, 0.0))
+ , center(PointD(0.0, 0.0, 0.0))
+ , normal(VectorD(0.0, 1.0, 0.0))
 {
 }
 
-inline Plane::Plane(const Vector4d& center ,const Vector4d& normal)
+inline Plane::Plane(const PointD& center ,const VectorD& normal)
  : GeometricObject()
  , center(center)
  , normal(normal)
