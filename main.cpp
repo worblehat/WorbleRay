@@ -70,7 +70,6 @@ int main(int argc, char *argv[])
             ray = camera.createRay(x, y);
             Intersection intersection = scene.trace(ray);
 
-            // Shade intersction point
             if(intersection.get_exists())
             {
                const Material *material = intersection.get_hit_object()->get_material();
@@ -81,11 +80,8 @@ int main(int argc, char *argv[])
                pixel_color = scene.get_background();
             }
 
-            // Set pixel color
             window->set_pixel(x, y, pixel_color.get_r(), pixel_color.get_g(), pixel_color.get_b());
         }
-
-        // Redraw
         window->refresh();
     }
 

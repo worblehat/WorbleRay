@@ -4,7 +4,8 @@
 
 #include "Framebuffer.h"
 
-#include <SDL/SDL.h>
+#include <SDL2/SDL_video.h>
+#include <SDL2/SDL_render.h>
 
 class SDLWindow : public Framebuffer
 {
@@ -14,7 +15,10 @@ class SDLWindow : public Framebuffer
         virtual void set_pixel(short x, short y, float r, float g, float b);
         virtual void refresh();
     private:
-        SDL_Surface *surface_ptr;
+        SDL_Window *window;
+        SDL_Renderer *renderer;
+        SDL_Surface *surface;
+        SDL_Texture *texture;
 };
 
 #endif //ifndef SDL_WINDOW_H

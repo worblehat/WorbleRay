@@ -38,7 +38,7 @@ add_executable(${PROJECT_NAME}
     README.md
 )
 
-find_package(SDL REQUIRED)
-target_include_directories(${PROJECT_NAME} PUBLIC ${SDL_INCLUDE_DIR})
-target_link_libraries(${PROJECT_NAME} ${SDL_LIBRARY})
+find_package(SDL2 REQUIRED)
+target_include_directories(${PROJECT_NAME} PUBLIC ${SDL2_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
 

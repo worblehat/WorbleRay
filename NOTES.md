@@ -7,6 +7,7 @@
 # To Do
 
 * handling Window-events
+* Find a more efficient way of single pixel rendering in SDL2 and refresh window after every pixel
 * consistent coding-style \
   (whitespaces, inlining, references, clean up includes, virtual destructors, for-each loops, rule of 3...)
 * perspective camera
