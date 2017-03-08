@@ -126,7 +126,7 @@ VectorD &VectorD::operator/=(const double &d)
     return *this;
 }
 
-VectorD VectorD::operator-()
+VectorD VectorD::operator-() const
 {
   return VectorD(-x, -y, -z);
 }

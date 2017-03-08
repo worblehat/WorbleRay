@@ -43,7 +43,7 @@ public:
     //! vector /= double
     VectorD &operator/=(const double &d);
     //! vector = -vector
-    VectorD operator-();
+    VectorD operator-() const;
 
 public:
     double x;
