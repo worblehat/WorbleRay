@@ -1,9 +1,15 @@
+# Implemented Features
+
+* orthographic camera
+* sphere intersection
+* lambert material
+
 # To Do
 
-* point-, vector-, normal-classes (eliminate glm-dependency)
-* consistent coding-style (whitespaces, inlining, references, clean up include...)
-* perspective camera
 * handling Window-events
+* consistent coding-style \
+  (whitespaces, inlining, references, clean up includes, virtual destructors, for-each loops, rule of 3...)
+* perspective camera
 * debug-utilities (including vector-printing)
 * Phong-material
 * plane-intersection
@@ -15,9 +21,5 @@
 * triangle-intersection and shading (flat, Gouraud, Phong)
 * import meshes (and materials)
 * antialiasing
-
-# Done
-
-* orthographic camera
-* sphere intersection
-* lambert material
+* matrix- and normal-class as needed
+* shadows (epsilon in intersections? See [Suffer:2014] sec. 3.4.1)
