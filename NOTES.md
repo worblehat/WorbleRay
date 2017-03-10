@@ -8,8 +8,7 @@
 
 * handling Window-events
 * Find a more efficient way of single pixel rendering in SDL2 and refresh window after every pixel
-* consistent coding-style \
-  (whitespaces, inlining, references, clean up includes, virtual destructors, for-each loops, rule of 3...)
+* consider rule of 3 (5)
 * perspective camera
 * debug-utilities (including vector-printing)
 * Phong-material

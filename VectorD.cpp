@@ -3,6 +3,7 @@
 
 #include <cmath>
 
+
 VectorD::VectorD()
     : x(1.0)
     , y(0.0)
@@ -31,10 +32,6 @@ VectorD::VectorD(const VectorD &v)
 {
 }
 
-VectorD::~VectorD()
-{
-}
-
 double VectorD::length() const
 {
     return std::sqrt(x * x + y * y + z * z);
@@ -54,24 +51,24 @@ VectorD VectorD::cross(const VectorD &v) const
 
 void VectorD::normalize()
 {
-  double len = length();
-  if(len > 0)
-  {
-      x /= len;
-      y /= len;
-      z /= len;
-  }
+    double len = length();
+    if(len > 0)
+    {
+        x /= len;
+        y /= len;
+        z /= len;
+    }
 }
 
 VectorD &VectorD::operator=(const VectorD &v)
 {
-  if(this != &v)
-  {
-      x = v.x;
-      y = v.y;
-      z = v.z;
-  }
-  return *this;
+    if(this != &v)
+    {
+        x = v.x;
+        y = v.y;
+        z = v.z;
+    }
+    return *this;
 }
 
 VectorD VectorD::operator+(const VectorD &v) const
@@ -128,7 +125,7 @@ VectorD &VectorD::operator/=(const double &d)
 
 VectorD VectorD::operator-() const
 {
-  return VectorD(-x, -y, -z);
+    return VectorD(-x, -y, -z);
 }
 
 VectorD operator*(const double &d, const VectorD &v)

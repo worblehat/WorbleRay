@@ -3,6 +3,7 @@
 
 class VectorD;
 
+
 /**
  * @brief Three-dimensional point with double precision floating-point coordinates.
  */
@@ -13,8 +14,6 @@ public:
     PointD(double x, double y, double z);
     explicit PointD(const VectorD &v);
     PointD(const PointD &p);
-
-    virtual ~PointD();
 
     //! point = point
     PointD &operator=(const PointD &p);

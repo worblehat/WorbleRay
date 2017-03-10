@@ -3,6 +3,7 @@
 
 class PointD;
 
+
 /**
  * @brief Three-dimensional vector (representing a direction) with double precision floating-point
  * coordinates.
@@ -14,8 +15,6 @@ public:
     VectorD(double x, double y, double z);
     VectorD(const PointD &p);
     VectorD(const VectorD &v);
-
-    virtual ~VectorD();
 
     double length() const;
     //! Dot-product

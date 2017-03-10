@@ -1,6 +1,7 @@
 #include "PointD.h"
 #include "VectorD.h"
 
+
 PointD::PointD()
     : x(0.0)
     , y(0.0)
@@ -29,17 +30,13 @@ PointD::PointD(const PointD &p)
 {
 }
 
-PointD::~PointD()
-{
-}
-
 PointD &PointD::operator=(const PointD &p)
 {
     if(this != &p)
     {
-      x = p.x;
-      y = p.y;
-      z = p.z;
+        x = p.x;
+        y = p.y;
+        z = p.z;
     }
     return *this;
 }

@@ -3,15 +3,16 @@
 
 #include "Camera.h"
 
+
 /**
  * @brief TODO doc: camera position at center of view-plane
  */
 class OrthographicCamera : public Camera
 {
-    public:
-        OrthographicCamera();
+public:
+    OrthographicCamera();
 
-        virtual Ray createRay(int x, int y) const override;
+    virtual Ray createRay(int x, int y) const override;
 };
 
 #endif //ifndef ORTHOGRAPHICCAMERA_H

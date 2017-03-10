@@ -1,4 +1,3 @@
-
 #include "SDLWindow.h"
 
 #include <iostream>
@@ -7,7 +6,7 @@
 
 
 SDLWindow::SDLWindow(short width, short height)
- : Framebuffer(width, height)
+    : Framebuffer(width, height)
 {
     if(SDL_Init(SDL_INIT_VIDEO) == -1)
     {

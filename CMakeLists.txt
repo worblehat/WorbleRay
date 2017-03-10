@@ -10,10 +10,17 @@ add_executable(${PROJECT_NAME}
     AmbientLight.h
     Camera.cpp
     Camera.h
+    Color.cpp
     Color.h
+    Framebuffer.cpp
     Framebuffer.h
+    Intersection.cpp
+    Intersection.h
+    GeometricObject.cpp
+    GeometricObject.h
     LambertMaterial.cpp
     LambertMaterial.h
+    Light.cpp
     Light.h
     main.cpp
     Material.h
@@ -25,6 +32,7 @@ add_executable(${PROJECT_NAME}
     PointD.h
     PointLight.cpp
     PointLight.h
+    Ray.cpp
     Ray.h
     SDLWindow.cpp
     SDLWindow.h

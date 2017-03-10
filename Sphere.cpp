@@ -1,9 +1,25 @@
-
+#include "Intersection.h"
+#include "Ray.h"
 #include "Sphere.h"
 #include "VectorD.h"
 
 #include <cmath>
 #include <iostream>
+
+
+Sphere::Sphere()
+    : GeometricObject()
+    , center(PointD(0.0, 0.0, 0.0))
+    , radius(1.0)
+{
+}
+
+Sphere::Sphere(const PointD& center, float radius)
+    : GeometricObject()
+    , center(center)
+    , radius(radius)
+{
+}
 
 const Intersection Sphere::intersect(const Ray& ray)
 {
@@ -11,7 +27,7 @@ const Intersection Sphere::intersect(const Ray& ray)
      * An intersection between a ray and sphere can be described by two different vector paths, which
      * are therefore equal:
      * Ray.origin + t * Ray.direction = Sphere.center + Q
-     * where Q is a vector from the spheres center to the sphere surface with length = Sphere.radius 
+     * where Q is a vector from the spheres center to the sphere surface with length = Sphere.radius
      * This forumla can be rearranged to a quadratic equation for t:
      * a * t^1 + b * t + c = 0
      * where
@@ -25,25 +41,25 @@ const Intersection Sphere::intersect(const Ray& ray)
      * d = b^2 - 4ac
      * d < 0: no intersection
      * d = 0: one intersection
-     * d > 0: two intersections 
+     * d > 0: two intersections
      * If d >= 0 we need to calculate t to check if the ray starts before, inside or after the sphere.
      */
 
     Intersection intersection;
-    intersection.set_exists(false);
-    intersection.set_incident_ray(ray);
+    intersection.exists = false;
+    intersection.incident_ray = ray;
     double t;
-    double radius = this->radius; 
-    PointD origin = ray.get_origin();
+    double radius = this->radius;
+    PointD origin = ray.origin;
     PointD center = this->center;
-    VectorD dir = ray.get_direction();
+    VectorD dir = ray.direction;
     // Precalculations
     VectorD ray_sphere_diff = origin - center;
     double a = dir.dot(dir);
     double b = 2 * dir.dot(ray_sphere_diff);
     double c = ray_sphere_diff.dot(ray_sphere_diff) - std::pow(radius, 2);
     double d = std::pow(b, 2) - 4 * a * c;
-    // At least one intersection 
+    // At least one intersection
     if(d >= 0)
     {
         double sqrt_d = std::sqrt(d);
@@ -52,17 +68,17 @@ const Intersection Sphere::intersect(const Ray& ray)
         // ray origin "before" sphere?
         if(t > 0) // TODO include a small offset (epsilon) here *or* when calculating intersections for shadows
         {
-            intersection.set_hit_object(this);
-            intersection.set_exists(true);
-            intersection.set_t(t);
+            intersection.hit_object = this;
+            intersection.exists = true;
+            intersection.t = t;
             // Calculate intersection point
             PointD hit_point = origin + t * dir;
-            intersection.set_hit_point(hit_point);
+            intersection.hit_point = hit_point;
             // Calculate normal at intersection point
-            intersection.set_normal(hit_point - center); //TODO Test!
-            //TODO normalize normal?
+            intersection.normal = hit_point - center;
+            intersection.normal.normalize();
         }
-        // if t1 was <= 0 we check the second intersection point (if there is one) 
+        // if t1 was <= 0 we check the second intersection point (if there is one)
         else if(d > 0)
         {
             t = (- b + sqrt_d) / (2 * a);
@@ -70,9 +86,9 @@ const Intersection Sphere::intersect(const Ray& ray)
             {
                 // The ray's origin is inside the sphere...
                 //TODO The ray hits the sphere on it's inside, so this intersection point my only
-                // be interesting for refractions. 
+                // be interesting for refractions.
             }
-        } 
+        }
     }
     
     return intersection;

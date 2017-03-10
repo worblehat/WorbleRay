@@ -1,5 +1,5 @@
-
 #include "Camera.h"
+
 
 Camera::Camera()
     : look_at(0.0, 0.0, -1.0)
@@ -7,10 +7,6 @@ Camera::Camera()
     , x_res(100)
     , y_res(100)
     , pixel_size(1.0)
-{
-}
-
-Camera::~Camera()
 {
 }
 

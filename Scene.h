@@ -1,21 +1,19 @@
-
 #ifndef SCENE_H
 #define SCENE_H
 
-//#include "AmbientLight.h"
-//#include "Camera.h"
 #include "Color.h"
-#include "GeometricObject.h"
-#include "Intersection.h"
-//#include "Light.h"
-//#include "Ray.h"
 
+#include <memory>
 #include <vector>
 
 class AmbientLight;
 class Camera;
+class Color;
+class GeometricObject;
+class Intersection;
 class Light;
 class Ray;
+
 
 /**
  * \brief Description of a 3D Scene.
@@ -27,63 +25,22 @@ class Ray;
  */
 class Scene
 {
-    public:
-        void add_object(GeometricObject *object);
-        void add_light(Light* light);
-        const std::vector<Light*> get_lights() const;
-        void set_ambient_light(AmbientLight* light); 
-        AmbientLight* get_ambient_light() const;    
-        void set_camera(Camera* camera);
-        void set_background(const Color& bg_color);
-        const Color& get_background() const;
-        Intersection trace(const Ray& ray);
-    private:
-        std::vector<GeometricObject*> objects;
-        std::vector<Light*> lights;
-        AmbientLight *ambient_light;   
-        Camera *camera;
-        Color bg_color;
+public:
+    void add_object(std::unique_ptr<GeometricObject> object);
+    void add_light(std::unique_ptr<Light> light);
+    const std::vector<std::unique_ptr<Light>> &lights() const;
+    void set_ambient_light(std::unique_ptr<AmbientLight> light);
+    AmbientLight* ambient_light() const;
+    void set_camera(std::unique_ptr<Camera> camera);
+    void set_background(const Color& bg_color);
+    const Color& background() const;
+    Intersection trace(const Ray& ray);
+private:
+    std::vector<std::unique_ptr<GeometricObject>> _objects;
+    std::vector<std::unique_ptr<Light>> _lights;
+    std::unique_ptr<AmbientLight> _ambient_light;
+    std::unique_ptr<Camera> _camera;
+    Color bg_color;
 };
-
-
-inline void Scene::add_object(GeometricObject* object)
-{
-    objects.push_back(object);
-}
-        
-inline void Scene::add_light(Light* light)
-{
-    lights.push_back(light);
-}
-        
-inline void Scene::set_ambient_light(AmbientLight* light)
-{
-   ambient_light = light; 
-}
-
-inline void Scene::set_camera(Camera* camera)
-{
-    this->camera = camera;
-}
-        
-inline void Scene::set_background(const Color& bg_color)
-{
-    this->bg_color = bg_color;
-}
-        
-inline const Color& Scene::get_background() const
-{
-    return bg_color;
-}
-        
-inline const std::vector<Light*> Scene::get_lights() const
-{
-    return lights;
-}
-        
-inline AmbientLight* Scene::get_ambient_light() const
-{
-    return ambient_light;
-}
 
 #endif // ifndef SCENE_H

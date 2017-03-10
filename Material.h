@@ -1,11 +1,10 @@
-
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include "Color.h"
-
-class Scene;
+class Color;
 class Intersection;
+class Scene;
+
 
 /**
  * \brief Abstract base class for materials that are able to calculate the shading of an
@@ -13,9 +12,9 @@ class Intersection;
  */
 class Material
 {
-    public:
-        virtual ~Material(){};
-        virtual Color shade(const Intersection& intersection, const Scene& scene) const = 0;
+public:
+    virtual ~Material() = default;
+    virtual Color shade(const Intersection& intersection, const Scene& scene) const = 0;
 };
 
 #endif //ifndef MATERIAL_H

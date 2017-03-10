@@ -1,15 +1,22 @@
-
+#include "Intersection.h"
 #include "PointLight.h"
+#include "VectorD.h"
 
 
-VectorD PointLight::get_direction(const Intersection& intersection) const
+PointLight::PointLight(const PointD& position, const Color& color, float radiance)
+    : Light(color, radiance)
+    , position(position)
 {
-    VectorD direction = intersection.get_hit_point() - position;
+}
+
+VectorD PointLight::direction_at(const Intersection& intersection) const
+{
+    VectorD direction = intersection.hit_point - position;
     direction.normalize();
     return direction;
 }
 
-Color PointLight::get_intensity() const
+Color PointLight::intensity() const
 {
     return color * radiance;
 }
