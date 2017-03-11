@@ -15,7 +15,7 @@ class VectorD
 public:
     VectorD();
     VectorD(double x, double y, double z);
-    VectorD(const PointD &p);
+    explicit VectorD(const PointD &p);
     VectorD(const VectorD &v);
 
     std::string str() const;
