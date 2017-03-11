@@ -60,6 +60,7 @@ Intersection Scene::trace(const Ray& ray)
         if(intersection.exists && intersection.t < t_min)
         {
             closest_intersection = intersection;
+            t_min = intersection.t;
         }
     }
 
