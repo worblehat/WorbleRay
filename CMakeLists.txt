@@ -50,10 +50,10 @@ add_executable(${PROJECT_NAME}
 )
 
 find_package(SDL2 REQUIRED)
-target_include_directories(${PROJECT_NAME} PUBLIC base)
-target_include_directories(${PROJECT_NAME} PUBLIC core)
-target_include_directories(${PROJECT_NAME} PUBLIC impl)
-target_include_directories(${PROJECT_NAME} PUBLIC util)
-target_include_directories(${PROJECT_NAME} PUBLIC ${SDL2_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} PRIVATE base)
+target_include_directories(${PROJECT_NAME} PRIVATE core)
+target_include_directories(${PROJECT_NAME} PRIVATE impl)
+target_include_directories(${PROJECT_NAME} PRIVATE util)
+target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
 
