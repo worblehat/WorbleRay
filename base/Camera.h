@@ -17,7 +17,7 @@ public:
     Camera();
     virtual ~Camera() = default;
 
-    virtual Ray createRay(int x, int y) const = 0;
+    virtual Ray create_ray(int x, int y) const = 0;
     void set_position(const PointD &position);
     void set_look_at(const VectorD &look_at);
     void set_up_vector(const VectorD &up);

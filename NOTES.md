@@ -1,14 +1,13 @@
 # Implemented Features
 
-* orthographic camera
-* sphere intersection
-* lambert material
+* orthographic and perspective camera
+* rendering of spheres
+* diffuse material
 
 # To Do
 
 ## Featues
 
-* perspective camera
 * Phong-material
 * plane-intersection
 * progressive raytracing for early feedback
@@ -21,6 +20,7 @@
 
 ## Technical Stuff
 
+* optimize Camera::createRay() implementations with precalculations
 * use float instead of double where appropriate
 * matrix- and normal-class as needed
 * Find a more efficient way of single pixel rendering in SDL2 and refresh window after every pixel

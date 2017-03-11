@@ -3,6 +3,7 @@
 #include "LambertMaterial.h"
 #include "log.h"
 #include "OrthographicCamera.h"
+#include "PerspectiveCamera.h"
 #include "Plane.h"
 #include "PointLight.h"
 #include "Ray.h"
@@ -32,16 +33,20 @@ int main(int argc, char *argv[])
     Scene scene;
 
     // Define objects
-    auto plane = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, 0.0), VectorD(0.0, 0.0, 1.0)));
-    auto sphere = std::unique_ptr<Sphere>(new Sphere(PointD(0.0, 0.0, -150.0), 100.0));
+    auto plane = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, -150.0), VectorD(0.0, 0.0, 1.0)));
+    auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(0.0, 0.0, -150.0), 100.0));
+    auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(80.0, 0.0, -400.0), 100.0));
 
     // Specify materials
-    auto flat_lambert = std::make_shared<LambertMaterial>(Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
-    plane->set_material(flat_lambert);
-    sphere->set_material(flat_lambert);
+    auto red_lambert = std::make_shared<LambertMaterial>(Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
+    auto blue_lambert = std::make_shared<LambertMaterial>(Color(0.0f, 0.0f, 0.6f), Color(0.0f, 0.0f, 0.5f));
+    plane->set_material(red_lambert);
+    sphere_1->set_material(red_lambert);
+    sphere_2->set_material(blue_lambert);
 
-    // scene.add_object(plane);
-    scene.add_object(std::move(sphere));
+    //scene.add_object(std::move(plane));
+    scene.add_object(std::move(sphere_1));
+    scene.add_object(std::move(sphere_2));
 
     // Set light sources
     auto ambient_light = std::unique_ptr<AmbientLight>(
@@ -63,8 +68,9 @@ int main(int argc, char *argv[])
 
     Ray ray;
     Color pixel_color;
-    OrthographicCamera camera;
-    camera.set_position(PointD(0.0f, 0.0f, 0.0f));
+    PerspectiveCamera camera;
+    camera.set_field_of_view(90);
+    camera.set_position(PointD(0.0f, 0.0f, 400.0f));
     camera.set_look_at(VectorD(0.0f, 0.0f, -1.0f));
     camera.set_up_vector(VectorD(0.0f, 1.0f, 0.0f));
     camera.set_resolution(width, height);
@@ -74,7 +80,7 @@ int main(int argc, char *argv[])
     {
         for(short x = 0; x < width && !quit; ++x)
         {
-            ray = camera.createRay(x, y);
+            ray = camera.create_ray(x, y);
             Intersection intersection = scene.trace(ray);
 
             if(intersection.exists)

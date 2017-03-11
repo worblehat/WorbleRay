@@ -12,7 +12,7 @@ class OrthographicCamera : public Camera
 public:
     OrthographicCamera();
 
-    virtual Ray createRay(int x, int y) const override;
+    virtual Ray create_ray(int x, int y) const override;
 };
 
 #endif //ifndef ORTHOGRAPHICCAMERA_H

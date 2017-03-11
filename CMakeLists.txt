@@ -29,6 +29,8 @@ add_executable(${PROJECT_NAME}
     impl/LambertMaterial.h
     impl/OrthographicCamera.cpp
     impl/OrthographicCamera.h
+    impl/PerspectiveCamera.cpp
+    impl/PerspectiveCamera.h
     impl/Plane.cpp
     impl/Plane.h
     impl/PointLight.cpp
@@ -40,6 +42,7 @@ add_executable(${PROJECT_NAME}
     util/Color.cpp
     util/Color.h
     util/log.h
+    util/math.h
     util/PointD.cpp
     util/PointD.h
     util/VectorD.cpp
