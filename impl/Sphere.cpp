@@ -4,7 +4,6 @@
 #include "VectorD.h"
 
 #include <cmath>
-#include <iostream>
 
 
 Sphere::Sphere()

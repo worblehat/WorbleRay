@@ -39,7 +39,7 @@ add_executable(${PROJECT_NAME}
     impl/Sphere.h
     util/Color.cpp
     util/Color.h
-    util/debug.h
+    util/log.h
     util/PointD.cpp
     util/PointD.h
     util/VectorD.cpp
@@ -49,11 +49,11 @@ add_executable(${PROJECT_NAME}
     README.md
 )
 
-find_package(SDL2 REQUIRED)
 target_include_directories(${PROJECT_NAME} PRIVATE base)
 target_include_directories(${PROJECT_NAME} PRIVATE core)
 target_include_directories(${PROJECT_NAME} PRIVATE impl)
 target_include_directories(${PROJECT_NAME} PRIVATE util)
+
+find_package(SDL2 REQUIRED)
 target_include_directories(${PROJECT_NAME} PRIVATE ${SDL2_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES})
-

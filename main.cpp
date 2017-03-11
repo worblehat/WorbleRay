@@ -1,7 +1,7 @@
 #include "AmbientLight.h"
-#include "debug.h"
 #include "Intersection.h"
 #include "LambertMaterial.h"
+#include "log.h"
 #include "OrthographicCamera.h"
 #include "Plane.h"
 #include "PointLight.h"
@@ -11,7 +11,6 @@
 #include "Sphere.h"
 
 #include <cstdlib>
-#include <iostream>
 #include <memory>
 
 
@@ -26,7 +25,7 @@ int main(int argc, char *argv[])
     }
     else
     {
-        std::cout << "ERROR: wrong number of command line arguments" << std::endl;
+        ERROR("Wrong number of command line arguments.")
         exit(1);
     }
 

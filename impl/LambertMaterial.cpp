@@ -5,7 +5,6 @@
 #include "Scene.h"
 #include "VectorD.h"
 
-#include <iostream>
 #include <vector>
 
 

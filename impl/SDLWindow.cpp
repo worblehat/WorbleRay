@@ -1,6 +1,5 @@
+#include "log.h"
 #include "SDLWindow.h"
-
-#include <iostream>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_events.h>
@@ -15,7 +14,7 @@ bool SDLWindow::show()
 {
     if(SDL_Init(SDL_INIT_VIDEO) == -1)
     {
-        std::cout << "ERROR: Can't initialize SDL. " << SDL_GetError() << std::endl;
+        ERROR("Cannot initialize SDL. " << SDL_GetError())
         return false;
     }
 
@@ -23,14 +22,14 @@ bool SDLWindow::show()
                               width, height, 0);
     if(!window)
     {
-        std::cout << "ERROR: Cannot initialize SDL-window. " << SDL_GetError() << std::endl;
+        ERROR("Cannot initialize SDL-window. " << SDL_GetError())
         return false;
     }
 
     renderer = SDL_CreateRenderer(window, -1, 0);
     if(!renderer)
     {
-        std::cout << "ERROR: Cannot initialize SDL-renderer. " << SDL_GetError() << std::endl;
+        ERROR("Cannot initialize SDL-renderer. " << SDL_GetError())
         return false;
     }
 
@@ -38,21 +37,21 @@ bool SDLWindow::show()
     Uint32 Rmask, Gmask, Bmask, Amask;
     if(!SDL_PixelFormatEnumToMasks(SDL_PIXELFORMAT_RGB888, &bpp, &Rmask, &Gmask, &Bmask, &Amask))
     {
-        std::cout << "ERROR: Cannot create SDL-pixelformat. " << SDL_GetError() << std::endl;
+        ERROR("Cannot create SDL-pixelformat. " << SDL_GetError())
         return false;
     }
 
     surface = SDL_CreateRGBSurface(0, width, height, bpp, Rmask, Gmask, Bmask, Amask);
     if(!surface)
     {
-        std::cout << "ERROR: Cannot initialize SDL-surface. " << SDL_GetError() << std::endl;
+        ERROR("Cannot initialize SDL-surface. " << SDL_GetError())
         return false;
     }
 
     texture = SDL_CreateTextureFromSurface(renderer, surface);
     if(!texture)
     {
-        std::cout << "ERROR: Cannot initialize SDL-texture. " << SDL_GetError() << std::endl;
+        ERROR("Cannot initialize SDL-texture. " << SDL_GetError())
         return false;
     }
     return true;
