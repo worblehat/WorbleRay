@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+set(CMAKE_CXX_FLAGS_DEBUG "-DWORBLERAY_DEBUG")
+
 add_executable(${PROJECT_NAME}
     AmbientLight.cpp
     AmbientLight.h
@@ -12,6 +14,7 @@ add_executable(${PROJECT_NAME}
     Camera.h
     Color.cpp
     Color.h
+    debug.h
     Framebuffer.cpp
     Framebuffer.h
     Intersection.cpp

@@ -1,4 +1,5 @@
 #include "AmbientLight.h"
+#include "debug.h"
 #include "Intersection.h"
 #include "LambertMaterial.h"
 #include "OrthographicCamera.h"
