@@ -21,7 +21,6 @@
 
 ## Technical Stuff
 
-* debug-utilities (including vector-printing)
 * use float instead of double where appropriate
 * matrix- and normal-class as needed
 * Find a more efficient way of single pixel rendering in SDL2 and refresh window after every pixel
