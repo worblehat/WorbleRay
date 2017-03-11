@@ -2,7 +2,7 @@ WorbleRay, a simple ray tracer.
 
 Dependencies:
 
-* SDL 2(Simple Direct Media Layer)
+* SDL 2 (Simple Direct Media Layer)
 
 
 Copyright (C) 2017 Tobias Marquardt <tm@tobix.eu>
