@@ -52,7 +52,14 @@ int main(int argc, char *argv[])
     scene.add_light(std::move(point_light));
 
     // Define render window
-    Framebuffer *window = new SDLWindow(width, height);
+    SDLWindow window(width, height);
+    bool quit = false;
+    window.on_quit([&quit]()
+        {
+            quit = true;
+        }
+    );
+    quit = !window.show();
 
     Ray ray;
     Color pixel_color;
@@ -63,9 +70,9 @@ int main(int argc, char *argv[])
     camera.set_resolution(width, height);
     camera.set_pixel_size(1.0f);
     // For each pixel
-    for(short y = 0; y < height; ++y)
+    for(short y = 0; y < height && !quit; ++y)
     {
-        for(short x = 0; x < width; ++x)
+        for(short x = 0; x < width && !quit; ++x)
         {
             ray = camera.createRay(x, y);
             Intersection intersection = scene.trace(ray);
@@ -80,15 +87,16 @@ int main(int argc, char *argv[])
                 pixel_color = scene.background();
             }
 
-            window->set_pixel(x, y, pixel_color.r, pixel_color.g, pixel_color.b);
+            window.set_pixel(x, y, pixel_color.r, pixel_color.g, pixel_color.b);
+            window.handle_events();
         }
-        window->refresh();
+        window.refresh();
     }
 
-    char i;
-    std::cin >> i;
-
-    delete window;
+    while(!quit)
+    {
+        window.handle_events();
+    }
 
     return 0;
 }

@@ -6,7 +6,6 @@
 
 # To Do
 
-* handling Window-events
 * Find a more efficient way of single pixel rendering in SDL2 and refresh window after every pixel
 * consider rule of 3 (5)
 * perspective camera
