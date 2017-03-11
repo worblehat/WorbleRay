@@ -1,6 +1,8 @@
 #ifndef VECTORD_H
 #define VECTORD_H
 
+#include <string>
+
 class PointD;
 
 
@@ -15,6 +17,8 @@ public:
     VectorD(double x, double y, double z);
     VectorD(const PointD &p);
     VectorD(const VectorD &v);
+
+    std::string str() const;
 
     double length() const;
     //! Dot-product

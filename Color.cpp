@@ -1,5 +1,7 @@
 #include "Color.h"
 
+#include <cmath>
+
 
 Color::Color()
     : r(0.0f)
@@ -21,6 +23,14 @@ Color& Color::operator+(const Color& c)
     g += c.g;
     b += c.b;
     return *this;
+}
+
+std::string Color::str() const
+{
+    std::string r_str = std::to_string(std::lround(r*255));
+    std::string g_str = std::to_string(std::lround(g*255));
+    std::string b_str = std::to_string(std::lround(b*255));
+    return "Color(" + r_str + ", " + g_str + ", " + b_str + ")";
 }
 
 Color Color::operator+(const Color& c) const

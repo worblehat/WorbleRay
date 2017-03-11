@@ -32,6 +32,14 @@ VectorD::VectorD(const VectorD &v)
 {
 }
 
+std::string VectorD::str() const
+{
+    std::string x_str = std::to_string(x);
+    std::string y_str = std::to_string(y);
+    std::string z_str = std::to_string(z);
+    return "VectorD(" + x_str + ", " + y_str + ", " + z_str + ")";
+}
+
 double VectorD::length() const
 {
     return std::sqrt(x * x + y * y + z * z);

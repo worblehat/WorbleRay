@@ -1,6 +1,8 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+#include <string>
+
 
 /**
  * \brief RGB-color.
@@ -16,6 +18,8 @@ class Color
 public:
     Color();
     Color(float r, float g, float b);
+
+    std::string str() const;
 
     Color& operator+(const Color& c);
     Color operator+(const Color& c) const;

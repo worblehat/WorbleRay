@@ -30,6 +30,14 @@ PointD::PointD(const PointD &p)
 {
 }
 
+std::string PointD::str() const
+{
+    std::string x_str = std::to_string(x);
+    std::string y_str = std::to_string(y);
+    std::string z_str = std::to_string(z);
+    return "PointD(" + x_str + ", " + y_str + ", " + z_str + ")";
+}
+
 PointD &PointD::operator=(const PointD &p)
 {
     if(this != &p)

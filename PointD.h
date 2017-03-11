@@ -1,6 +1,8 @@
 #ifndef POINTD_H
 #define POINTD_H
 
+#include <string>
+
 class VectorD;
 
 
@@ -14,6 +16,8 @@ public:
     PointD(double x, double y, double z);
     explicit PointD(const VectorD &v);
     PointD(const PointD &p);
+
+    std::string str() const;
 
     //! point = point
     PointD &operator=(const PointD &p);
