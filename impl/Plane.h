@@ -9,18 +9,17 @@
 /**
  * \brief An infinite plane.
  *
- * The plane is defined by it's center point and normal.
+ * The plane is defined by an arbitrary point in the plane and the normal.
  */
 class Plane : public GeometricObject
 {
 public:
     Plane();
-    Plane(const PointD& center, const VectorD& normal);
-    virtual ~Plane();
+    Plane(const PointD& point, const VectorD& normal);
 
     virtual const Intersection intersect(const Ray& ray);
 private:
-    PointD center;
+    PointD point;
     VectorD normal;
 };
 
