@@ -8,6 +8,12 @@
 #include <limits>
 
 
+Scene::Scene()
+    : _ambient_light(nullptr)
+    , _camera(nullptr)
+{
+}
+
 void Scene::add_object(std::unique_ptr<GeometricObject> object)
 {
     _objects.push_back(std::move(object));
@@ -43,9 +49,14 @@ const std::vector<std::unique_ptr<Light>> &Scene::lights() const
     return _lights;
 }
 
-AmbientLight* Scene::ambient_light() const
+AmbientLight *Scene::ambient_light() const
 {
     return _ambient_light.get();
+}
+
+Camera *Scene::camera() const
+{
+    return _camera.get();
 }
 
 Intersection Scene::trace(const Ray& ray)

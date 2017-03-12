@@ -17,6 +17,7 @@ class Ray;
 class GeometricObject
 {
 public:
+    GeometricObject();
     virtual ~GeometricObject() = default;
     virtual const Intersection intersect(const Ray& ray) = 0;
     virtual void set_material(std::shared_ptr<Material> material);

@@ -26,12 +26,14 @@ class Ray;
 class Scene
 {
 public:
+    Scene();
     void add_object(std::unique_ptr<GeometricObject> object);
     void add_light(std::unique_ptr<Light> light);
     const std::vector<std::unique_ptr<Light>> &lights() const;
     void set_ambient_light(std::unique_ptr<AmbientLight> light);
-    AmbientLight* ambient_light() const;
+    AmbientLight *ambient_light() const;
     void set_camera(std::unique_ptr<Camera> camera);
+    Camera *camera() const;
     void set_background(const Color& bg_color);
     const Color& background() const;
     Intersection trace(const Ray& ray);

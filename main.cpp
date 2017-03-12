@@ -68,22 +68,29 @@ int main(int argc, char *argv[])
 
     Ray ray;
     Color pixel_color;
-    PerspectiveCamera camera;
-    camera.set_field_of_view(90);
-    camera.set_position(PointD(0.0f, 0.0f, 400.0f));
-    camera.set_look_at(VectorD(0.0f, 0.0f, -1.0f));
-    camera.set_up_vector(VectorD(0.0f, 1.0f, 0.0f));
-    camera.set_resolution(width, height);
-    camera.set_pixel_size(1.0f);
+    auto perspective_cam = std::unique_ptr<PerspectiveCamera>(new PerspectiveCamera());
+    perspective_cam->set_field_of_view(60);
+    perspective_cam->set_position(PointD(0.0f, 0.0f, 500.0f));
+    perspective_cam->set_look_at(VectorD(0.0f, 0.0f, -1.0f));
+    perspective_cam->set_up_vector(VectorD(0.0f, 1.0f, 0.0f));
+    perspective_cam->set_resolution(width, height);
+    perspective_cam->set_pixel_size(1.0f);
+    scene.set_camera(std::move(perspective_cam));
+
     // For each pixel
+    Camera *camera = scene.camera();
+    if(!camera)
+    {
+        //TODO
+    }
     for(short y = 0; y < height && !quit; ++y)
     {
         for(short x = 0; x < width && !quit; ++x)
         {
-            ray = camera.create_ray(x, y);
+            ray = camera->create_ray(x, y);
             Intersection intersection = scene.trace(ray);
 
-            if(intersection.exists)
+            if(intersection.exists && intersection.hit_object->material())
             {
                 const Material *material = intersection.hit_object->material();
                 pixel_color = material->shade(intersection, scene);

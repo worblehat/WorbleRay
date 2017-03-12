@@ -34,9 +34,13 @@ Color LambertMaterial::shade(const Intersection& intersection, const Scene& scen
     intensity += intensity_diffuse;
 
     // === Ambient reflection ===
-    Color ambient_light = scene.ambient_light()->intensity();
-    Color intensity_ambient = ambient_light * c_ambient;
-    intensity += intensity_ambient;
+    auto ambient_light = scene.ambient_light();
+    if(ambient_light)
+    {
+      Color ambient_intensity = scene.ambient_light()->intensity();
+      Color intensity_ambient = ambient_intensity * c_ambient;
+      intensity += intensity_ambient;
+    }
 
     return intensity;
 }
