@@ -17,11 +17,13 @@
 * import meshes (and materials)
 * antialiasing
 * shadows (epsilon in intersections? See [Suffer:2014] sec. 3.4.1)
+* gamma correction
+* fish-eye camera, stereoscopic camera
 
 ## Technical Stuff
 
 * optimize Camera::createRay() implementations with precalculations
 * use float instead of double where appropriate
 * matrix- and normal-class as needed
-* Find a more efficient way of single pixel rendering in SDL2 and refresh window after every pixel
+* find a more efficient way of single pixel rendering in SDL2 and refresh window after every pixel
 * consider rule of 3 (5)

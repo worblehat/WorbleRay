@@ -33,18 +33,33 @@ int main(int argc, char *argv[])
     Scene scene;
 
     // Define objects
-    auto plane = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, -150.0), VectorD(0.0, 0.0, 1.0)));
-    auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(0.0, 0.0, -150.0), 100.0));
-    auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(80.0, 0.0, -400.0), 100.0));
+    auto floor = std::unique_ptr<Plane>(new Plane(PointD(0.0, -400.0, 0.0), VectorD(0.0, 1.0, 0.0)));
+    auto wall_left = std::unique_ptr<Plane>(new Plane(PointD(-400.0, 0.0, 0.0), VectorD(1.0, 0.0, 0.0)));
+    auto wall_right = std::unique_ptr<Plane>(new Plane(PointD(400.0, 0.0, 0.0), VectorD(-1.0, 0.0, 0.0)));
+    auto wall_back = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, -800.0), VectorD(0.0, 0.0, 1.0)));
+    auto ceiling = std::unique_ptr<Plane>(new Plane(PointD(0.0, 400.0, 0.0), VectorD(0.0, -1.0, 0.0)));
+    auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(0.0, -250.0, -450.0), 150.0));
+    auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(180.0, -300.0, -300.0), 100.0));
 
     // Specify materials
     auto red_lambert = std::make_shared<LambertMaterial>(Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
+    auto green_lambert = std::make_shared<LambertMaterial>(Color(0.0f, 0.6f, 0.0f), Color(0.0f, 0.5f, 0.0f));
     auto blue_lambert = std::make_shared<LambertMaterial>(Color(0.0f, 0.0f, 0.6f), Color(0.0f, 0.0f, 0.5f));
-    plane->set_material(red_lambert);
+    auto light_gray_lambert = std::make_shared<LambertMaterial>(Color(0.8f, 0.8f, 0.8f), Color(0.5f, 0.5f, 0.5f));
+    auto dark_gray_lambert = std::make_shared<LambertMaterial>(Color(0.5f, 0.5f, 0.5f), Color(0.2f, 0.2f, 0.2f));
+    floor->set_material(green_lambert);
+    wall_left->set_material(light_gray_lambert);
+    wall_right->set_material(light_gray_lambert);
+    wall_back->set_material(light_gray_lambert);
+    ceiling->set_material(dark_gray_lambert);
     sphere_1->set_material(red_lambert);
     sphere_2->set_material(blue_lambert);
 
-    //scene.add_object(std::move(plane));
+    scene.add_object(std::move(floor));
+    scene.add_object(std::move(ceiling));
+    scene.add_object(std::move(wall_left));
+    scene.add_object(std::move(wall_right));
+    scene.add_object(std::move(wall_back));
     scene.add_object(std::move(sphere_1));
     scene.add_object(std::move(sphere_2));
 
