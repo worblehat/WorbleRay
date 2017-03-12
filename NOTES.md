@@ -1,7 +1,7 @@
 # Implemented Features
 
 * orthographic and perspective camera
-* rendering of spheres
+* rendering of spheres and planes
 * diffuse material
 
 # To Do
@@ -9,16 +9,15 @@
 ## Featues
 
 * Phong-material
-* plane-intersection
+* shadows (epsilon in intersections? See [Suffer:2014] sec. 3.4.1)
 * progressive raytracing for early feedback
 * directional light
 * area light
 * triangle-intersection and shading (flat, Gouraud, Phong)
-* import meshes (and materials)
 * antialiasing
-* shadows (epsilon in intersections? See [Suffer:2014] sec. 3.4.1)
 * gamma correction
 * fish-eye camera, stereoscopic camera
+* import meshes (and materials)
 
 ## Technical Stuff
 

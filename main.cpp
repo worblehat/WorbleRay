@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
     auto ambient_light = std::unique_ptr<AmbientLight>(
                 new AmbientLight(Color(0.3f, 0.3f, 0.3f), 1.0f));
     auto point_light = std::unique_ptr<PointLight>(
-            new PointLight(PointD(100.0f, 100.0f, 100.0f), Color(0.7f, 0.7f, 0.7f)));
+            new PointLight(PointD(200.0f, 300.0f, 0.0f), Color(0.7f, 0.7f, 0.7f)));
     scene.set_ambient_light(std::move(ambient_light));
     scene.add_light(std::move(point_light));
 
