@@ -21,26 +21,32 @@ Color LambertMaterial::shade(const Intersection& intersection, const Scene& scen
     PointD point = intersection.hit_point;
 
     // === Diffuse reflection ===
-    Color intensity_diffuse;
-    for(auto &light : scene.lights())
+    if(scene.options().diffuse_illumination)
     {
-        VectorD n = intersection.normal;
-        VectorD l = -1.0 * light->direction_at(point);
-        float dot = n.dot(l);
-        if(dot > 0.0f)
+        Color intensity_diffuse;
+        for(auto &light : scene.lights())
         {
-            intensity_diffuse += light->intensity(point, scene) * c_diffuse * dot;
+            VectorD n = intersection.normal;
+            VectorD l = -1.0 * light->direction_at(point);
+            float dot = n.dot(l);
+            if(dot > 0.0f)
+            {
+                intensity_diffuse += light->intensity(point, scene) * c_diffuse * dot;
+            }
         }
+        intensity += intensity_diffuse;
     }
-    intensity += intensity_diffuse;
 
     // === Ambient reflection ===
-    auto ambient_light = scene.ambient_light();
-    if(ambient_light)
+    if(scene.options().ambient_illumination)
     {
-      Color ambient_intensity = scene.ambient_light()->intensity(point, scene);
-      Color intensity_ambient = ambient_intensity * c_ambient;
-      intensity += intensity_ambient;
+        auto ambient_light = scene.ambient_light();
+        if(ambient_light)
+        {
+          Color ambient_intensity = scene.ambient_light()->intensity(point, scene);
+          Color intensity_ambient = ambient_intensity * c_ambient;
+          intensity += intensity_ambient;
+        }
     }
 
     return intensity;

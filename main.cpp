@@ -30,7 +30,11 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    Scene scene;
+    Options options;
+    options.ambient_illumination = true;
+    options.diffuse_illumination = true;
+
+    Scene scene(options);
 
     // Define objects
     auto floor = std::unique_ptr<Plane>(new Plane(PointD(0.0, -400.0, 0.0), VectorD(0.0, 1.0, 0.0)));

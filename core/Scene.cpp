@@ -14,6 +14,13 @@ Scene::Scene()
 {
 }
 
+Scene::Scene(const Options &options)
+    : _ambient_light(nullptr)
+    , _camera(nullptr)
+    , _options(options)
+{
+}
+
 void Scene::add_object(std::unique_ptr<GeometricObject> object)
 {
     _objects.push_back(std::move(object));
@@ -76,5 +83,10 @@ Intersection Scene::trace(const Ray& ray)
     }
 
     return closest_intersection;
+}
+
+const Options &Scene::options() const
+{
+    return _options;
 }
 

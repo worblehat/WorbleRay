@@ -15,6 +15,12 @@ class Light;
 class Ray;
 
 
+struct Options
+{
+    bool ambient_illumination = true;
+    bool diffuse_illumination = true;
+};
+
 /**
  * \brief Description of a 3D Scene.
  *
@@ -27,6 +33,8 @@ class Scene
 {
 public:
     Scene();
+    explicit Scene(const Options& options);
+
     void add_object(std::unique_ptr<GeometricObject> object);
     void add_light(std::unique_ptr<Light> light);
     const std::vector<std::unique_ptr<Light>> &lights() const;
@@ -37,12 +45,14 @@ public:
     void set_background(const Color& bg_color);
     const Color& background() const;
     Intersection trace(const Ray& ray);
+    const Options& options() const;
 private:
     std::vector<std::unique_ptr<GeometricObject>> _objects;
     std::vector<std::unique_ptr<Light>> _lights;
     std::unique_ptr<AmbientLight> _ambient_light;
     std::unique_ptr<Camera> _camera;
     Color bg_color;
+    Options _options;
 };
 
 #endif // ifndef SCENE_H
