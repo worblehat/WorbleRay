@@ -1,4 +1,3 @@
-#include "Intersection.h"
 #include "PointLight.h"
 #include "VectorD.h"
 
@@ -9,9 +8,9 @@ PointLight::PointLight(const PointD& position, const Color& color, float radianc
 {
 }
 
-VectorD PointLight::direction_at(const Intersection& intersection) const
+VectorD PointLight::direction_at(const PointD& point) const
 {
-    VectorD direction = intersection.hit_point - position;
+    VectorD direction = point - position;
     direction.normalize();
     return direction;
 }

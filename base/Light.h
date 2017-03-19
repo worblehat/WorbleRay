@@ -3,7 +3,7 @@
 
 #include "Color.h"
 
-class Intersection;
+class PointD;
 class VectorD;
 
 
@@ -17,10 +17,10 @@ public:
     Light(const Color& color, float radiance = 1.0);
     virtual ~Light() = default;
     /**
-     * \brief Get the normalized incomming direction of the light at an intersection point.
+     * \brief Get the normalized incomming direction of the light at a point.
      * Used as "light vector" in shading calculations."
      */
-    virtual VectorD direction_at(const Intersection& intersection) const = 0;
+    virtual VectorD direction_at(const PointD& point) const = 0;
     virtual Color intensity() const = 0;
     virtual void set_radiance(float r);
     virtual void set_color(const Color& c);

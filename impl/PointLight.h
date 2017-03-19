@@ -12,8 +12,8 @@ public:
     PointLight(const PointD& position = PointD(0.0, 0.0, 0.0),
                const Color& color = Color(1.0, 1.0, 1.0),
                float radiance = 1.0);
-    virtual VectorD direction_at(const Intersection& intersection) const;
-    virtual Color intensity() const;
+    virtual VectorD direction_at(const PointD& point) const override;
+    virtual Color intensity() const override;
 private:
     PointD position;
 };

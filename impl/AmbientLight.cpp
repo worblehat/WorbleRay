@@ -1,6 +1,7 @@
 #include "AmbientLight.h"
 #include "Color.h"
 #include "Intersection.h"
+#include "PointD.h"
 #include "VectorD.h"
 
 
@@ -14,7 +15,7 @@ AmbientLight::AmbientLight(const Color& color, float radiance)
 {
 }
 
-VectorD AmbientLight::direction_at(const Intersection& intersection) const
+VectorD AmbientLight::direction_at(const PointD& point) const
 {
     return VectorD(0.0, 0.0, 0.0);
 }

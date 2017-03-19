@@ -24,7 +24,7 @@ Color LambertMaterial::shade(const Intersection& intersection, const Scene& scen
     for(auto &light : scene.lights())
     {
         VectorD n = intersection.normal;
-        VectorD l = -1.0 * light->direction_at(intersection);
+        VectorD l = -1.0 * light->direction_at(intersection.hit_point);
         float dot = n.dot(l);
         if(dot > 0.0f)
         {

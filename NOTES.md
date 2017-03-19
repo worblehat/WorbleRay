@@ -3,6 +3,7 @@
 * orthographic and perspective camera
 * rendering of spheres and planes
 * diffuse material
+* ambient light and point light
 
 # To Do
 
