@@ -11,8 +11,11 @@
 #include "Scene.h"
 #include "Sphere.h"
 
+#include <chrono>
 #include <cstdlib>
 #include <memory>
+#include <thread>
+
 
 // Declared in log.h, defined here
 short X_POS;
@@ -134,6 +137,8 @@ int main(int argc, char *argv[])
 
     while(!quit)
     {
+        std::chrono::milliseconds t(30);
+        std::this_thread::sleep_for(t);
         window.handle_events();
     }
 
