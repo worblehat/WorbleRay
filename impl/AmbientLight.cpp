@@ -20,7 +20,7 @@ VectorD AmbientLight::direction_at(const PointD& point) const
     return VectorD(0.0, 0.0, 0.0);
 }
 
-Color AmbientLight::intensity() const
+Color AmbientLight::intensity(const PointD& point, const Scene& scene) const
 {
     return color * radiance;
 }

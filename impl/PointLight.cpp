@@ -1,4 +1,5 @@
 #include "PointLight.h"
+#include "Scene.h"
 #include "VectorD.h"
 
 
@@ -15,7 +16,7 @@ VectorD PointLight::direction_at(const PointD& point) const
     return direction;
 }
 
-Color PointLight::intensity() const
+Color PointLight::intensity(const PointD& point, const Scene& scene) const
 {
     return color * radiance;
 }
