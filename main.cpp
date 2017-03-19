@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     Options options;
     options.ambient_illumination = true;
     options.diffuse_illumination = true;
+    options.shadows = true;
 
     Scene scene(options);
 

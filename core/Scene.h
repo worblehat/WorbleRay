@@ -19,6 +19,7 @@ struct Options
 {
     bool ambient_illumination = true;
     bool diffuse_illumination = true;
+    bool shadows = true;
 };
 
 /**
@@ -44,7 +45,7 @@ public:
     Camera *camera() const;
     void set_background(const Color& bg_color);
     const Color& background() const;
-    Intersection trace(const Ray& ray);
+    Intersection trace(const Ray& ray) const;
     const Options& options() const;
 private:
     std::vector<std::unique_ptr<GeometricObject>> _objects;

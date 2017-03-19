@@ -4,16 +4,17 @@
 * rendering of spheres and planes
 * diffuse material
 * ambient light and point light
+* shadows
 
 # To Do
 
 ## Featues
 
 * Phong-material
-* shadows (epsilon in intersections? See [Suffer:2014] sec. 3.4.1)
 * progressive raytracing for early feedback
 * directional light
 * area light
+* soft shadows
 * triangle-intersection and shading (flat, Gouraud, Phong)
 * antialiasing
 * gamma correction
@@ -22,6 +23,8 @@
 
 ## Technical Stuff
 
+* special versions Scene::trace() and GeometricObject::intersect() for shadow rays which don't
+  need the whole Intersection information
 * optimize Camera::createRay() implementations with precalculations
 * use float instead of double where appropriate
 * matrix- and normal-class as needed

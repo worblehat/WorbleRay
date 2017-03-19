@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "Intersection.h"
 #include "GeometricObject.h"
+#include "log.h"
 #include "Light.h"
 #include "Scene.h"
 
@@ -66,7 +67,7 @@ Camera *Scene::camera() const
     return _camera.get();
 }
 
-Intersection Scene::trace(const Ray& ray)
+Intersection Scene::trace(const Ray& ray) const
 {
     double t_min = std::numeric_limits<double>::max();
     Intersection closest_intersection;
