@@ -14,6 +14,9 @@
 #include <cstdlib>
 #include <memory>
 
+// Declared in log.h, defined here
+short X_POS;
+short Y_POS;
 
 int main(int argc, char *argv[])
 {
@@ -104,8 +107,10 @@ int main(int argc, char *argv[])
     }
     for(short y = 0; y < height && !quit; ++y)
     {
+        Y_POS = y;
         for(short x = 0; x < width && !quit; ++x)
         {
+            X_POS = x;
             ray = camera->create_ray(x, y);
             Intersection intersection = scene.trace(ray);
 
