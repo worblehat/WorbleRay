@@ -23,13 +23,14 @@ Color PointLight::intensity(const PointD& point, const Scene& scene) const
     if(scene.options().shadows)
     {
         // Cast a ray from light to the point
-        VectorD shadow_vec = point - position;
-        Ray shadow_ray(position, shadow_vec);
+        VectorD shadow_vec = position - point;
+        Ray shadow_ray(point, shadow_vec);
         Intersection intersection = scene.trace(shadow_ray);
 
         // Is there any object between light and point?
-        double point_dist = shadow_vec.length();
-        if(intersection.exists && intersection.t < point_dist) //TODO do we need an epsilon here?
+        double light_dist = shadow_vec.length();
+        const double e = scene.options().intersection_epsilon;
+        if(intersection.exists && intersection.t < light_dist)
         {
             return Color();
         }

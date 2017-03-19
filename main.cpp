@@ -37,6 +37,7 @@ int main(int argc, char *argv[])
     options.ambient_illumination = true;
     options.diffuse_illumination = true;
     options.shadows = true;
+    options.intersection_epsilon = 0.0000000001;
 
     Scene scene(options);
 

@@ -70,16 +70,18 @@ Camera *Scene::camera() const
 Intersection Scene::trace(const Ray& ray) const
 {
     double t_min = std::numeric_limits<double>::max();
+    const double e = _options.intersection_epsilon;
     Intersection closest_intersection;
     closest_intersection.exists = false;
 
     for(auto const &object : _objects)
     {
         Intersection intersection = object->intersect(ray);
-        if(intersection.exists && intersection.t < t_min)
+        double t = intersection.t;
+        if(intersection.exists && t > e && t < t_min)
         {
             closest_intersection = intersection;
-            t_min = intersection.t;
+            t_min = t;
         }
     }
 
