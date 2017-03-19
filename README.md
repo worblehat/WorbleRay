@@ -16,4 +16,4 @@ along with this program. If not, see <http://www.gnu.org/licenses>.
 
 # Gallery
 
-![](http://worblehat.github.io/storage/rt-rendering-1.png "Spheres, planes, diffuse materials and a point light.")
+![](http://worblehat.github.io/storage/rt-rendering-2.png "Spheres, planes, diffuse materials and a point light.")
