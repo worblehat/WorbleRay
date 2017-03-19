@@ -11,6 +11,7 @@ Ray::Ray(const PointD& origin, const VectorD& direction)
     : origin(origin)
     , direction(direction)
 {
+    this->direction.normalize();
 }
 
 Ray::Ray(const double& o_x, const double& o_y, const double& o_z,
@@ -18,4 +19,5 @@ Ray::Ray(const double& o_x, const double& o_y, const double& o_z,
     : origin(o_x, o_y, o_z)
     , direction(d_x, d_y, d_z)
 {
+    this->direction.normalize();
 }
