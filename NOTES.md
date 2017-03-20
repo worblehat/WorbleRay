@@ -2,7 +2,7 @@
 
 * orthographic and perspective camera
 * rendering of spheres and planes
-* diffuse material
+* matte and glossy materials
 * ambient light and point light
 * shadows
 
@@ -10,7 +10,6 @@
 
 ## Featues
 
-* Phong-material
 * directional light
 * implicit torus-object
 * reflection

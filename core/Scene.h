@@ -19,6 +19,7 @@ struct Options
 {
     bool ambient_illumination = true;
     bool diffuse_illumination = true;
+    bool specular_illumination = true;
     bool shadows = true;
     double intersection_epsilon = 0.0000001;
 };

@@ -4,6 +4,7 @@
 #include "log.h"
 #include "OrthographicCamera.h"
 #include "PerspectiveCamera.h"
+#include "PhongMaterial.h"
 #include "Plane.h"
 #include "PointLight.h"
 #include "Ray.h"
@@ -39,6 +40,7 @@ int main(int argc, char *argv[])
     Options options;
     options.ambient_illumination = true;
     options.diffuse_illumination = true;
+    options.specular_illumination = true;
     options.shadows = true;
     options.intersection_epsilon = 0.0000000001;
 
@@ -54,9 +56,11 @@ int main(int argc, char *argv[])
     auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(180.0, -300.0, -300.0), 100.0));
 
     // Specify materials
-    auto red_lambert = std::make_shared<LambertMaterial>(Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f));
+    auto red_phong = std::make_shared<PhongMaterial>(
+                Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f), Color(0.6f, 0.6f, 0.6f), 20.0);
+    auto blue_phong = std::make_shared<PhongMaterial>(
+                Color(0.0f, 0.0f, 0.6f), Color(0.0f, 0.0f, 0.5f), Color(0.0f, 0.0f, 0.6f), 5.0);
     auto green_lambert = std::make_shared<LambertMaterial>(Color(0.0f, 0.6f, 0.0f), Color(0.0f, 0.5f, 0.0f));
-    auto blue_lambert = std::make_shared<LambertMaterial>(Color(0.0f, 0.0f, 0.6f), Color(0.0f, 0.0f, 0.5f));
     auto light_gray_lambert = std::make_shared<LambertMaterial>(Color(0.8f, 0.8f, 0.8f), Color(0.5f, 0.5f, 0.5f));
     auto dark_gray_lambert = std::make_shared<LambertMaterial>(Color(0.5f, 0.5f, 0.5f), Color(0.2f, 0.2f, 0.2f));
     floor->set_material(green_lambert);
@@ -64,8 +68,8 @@ int main(int argc, char *argv[])
     wall_right->set_material(light_gray_lambert);
     wall_back->set_material(light_gray_lambert);
     ceiling->set_material(dark_gray_lambert);
-    sphere_1->set_material(red_lambert);
-    sphere_2->set_material(blue_lambert);
+    sphere_1->set_material(red_phong);
+    sphere_2->set_material(blue_phong);
 
     scene.add_object(std::move(floor));
     scene.add_object(std::move(ceiling));

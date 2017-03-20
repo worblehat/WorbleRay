@@ -31,6 +31,8 @@ add_executable(${PROJECT_NAME}
     impl/OrthographicCamera.h
     impl/PerspectiveCamera.cpp
     impl/PerspectiveCamera.h
+    impl/PhongMaterial.cpp
+    impl/PhongMaterial.h
     impl/Plane.cpp
     impl/Plane.h
     impl/PointLight.cpp
