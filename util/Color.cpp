@@ -17,14 +17,6 @@ Color::Color(float r, float g, float b)
 {
 }
 
-Color& Color::operator+(const Color& c)
-{
-    r += c.r;
-    g += c.g;
-    b += c.b;
-    return *this;
-}
-
 std::string Color::str() const
 {
     std::string r_str = std::to_string(std::lround(r*255));
@@ -54,25 +46,9 @@ Color& Color::operator-=(const Color& c)
     return *this;
 }
 
-Color& Color::operator*(const Color& c)
-{
-    r *= c.r;
-    g *= c.g;
-    b *= c.b;
-    return *this;
-}
-
 Color Color::operator*(const Color& c) const
 {
     return Color(r * c.r, g * c.g, b * c.b);
-}
-
-Color& Color::operator-(const Color& c)
-{
-    r -= c.r;
-    g -= c.g;
-    b -= c.b;
-    return *this;
 }
 
 Color Color::operator-(const Color& c) const
@@ -80,25 +56,9 @@ Color Color::operator-(const Color& c) const
     return Color(r - c.r, g - c.g, b - c.b);
 }
 
-Color& Color::operator+(float f)
-{
-    r += f;
-    g += f;
-    b += f;
-    return *this;
-}
-
 Color Color::operator+(float f) const
 {
     return Color(r + f, g + f, b + f);
-}
-
-Color& Color::operator-(float f)
-{
-    r -= f;
-    g -= f;
-    b -= f;
-    return *this;
 }
 
 Color Color::operator-(float f) const
@@ -106,15 +66,31 @@ Color Color::operator-(float f) const
     return Color(r - f, g - f, b - f);
 }
 
-Color& Color::operator*(float f)
-{
-    r *= f;
-    g *= f;
-    b *= f;
-    return *this;
-}
-
 Color Color::operator*(float f) const
 {
     return Color(r * f, g * f, b * f);
+}
+
+Color& Color::operator+=(float f)
+{
+    r += f;
+    g += f;
+    r += f;
+    return *this;
+}
+
+Color& Color::operator-=(float f)
+{
+    r -= f;
+    g -= f;
+    r -= f;
+    return *this;
+}
+
+Color& Color::operator*=(float f)
+{
+    r *= f;
+    g *= f;
+    r *= f;
+    return *this;
 }

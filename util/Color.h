@@ -21,20 +21,30 @@ public:
 
     std::string str() const;
 
-    Color& operator+(const Color& c);
+    //! color = color + color
     Color operator+(const Color& c) const;
-    Color& operator-(const Color& c);
-    Color operator-(const Color& c) const;
+    //! color += color
     Color& operator+=(const Color& c);
+    //! color = color - color
+    Color operator-(const Color& c) const;
+    //! color -= color
     Color& operator-=(const Color& c);
-    Color& operator*(const Color& c);
+    //! color = color * color
     Color operator*(const Color& c) const;
-    Color& operator+(float f);
+    //! color*-= color
+    Color& operator*=(const Color& c);
+    //! color = color + float
     Color operator+(float f) const;
-    Color& operator-(float f);
+    //! color += float
+    Color& operator+=(float f);
+    //! color = color - float
     Color operator-(float f) const;
-    Color& operator*(float f);
+    //! color -= float
+    Color& operator-=(float f);
+    //! color = color * float
     Color operator*(float f) const;
+    //! color *= float
+    Color& operator*=(float f);
 
 public:
     float r;
