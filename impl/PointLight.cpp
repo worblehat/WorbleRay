@@ -29,7 +29,6 @@ Color PointLight::intensity(const PointD& point, const Scene& scene) const
 
         // Is there any object between light and point?
         double light_dist = shadow_vec.length();
-        const double e = scene.options().intersection_epsilon;
         if(intersection.exists && intersection.t < light_dist)
         {
             return Color();

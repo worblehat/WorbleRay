@@ -6,7 +6,7 @@
 #ifdef WORBLERAY_DEBUG
     #define DEBUG(x) std::cout << "DEBUG: " << x << std::endl;
 #else
-    #define DEBUG(x)
+    #define DEBUG(x) ;
 #endif
 
 #define INFO(x) std::cout << "INFO: " << x << std::endl;
