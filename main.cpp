@@ -8,6 +8,7 @@
 #include "Plane.h"
 #include "PointLight.h"
 #include "Ray.h"
+#include "Renderer.h"
 #include "SDLWindow.h"
 #include "Scene.h"
 #include "Sphere.h"
@@ -37,6 +38,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
+    // Optionen
     Options options;
     options.ambient_illumination = true;
     options.diffuse_illumination = true;
@@ -44,9 +46,9 @@ int main(int argc, char *argv[])
     options.shadows = true;
     options.intersection_epsilon = 0.0000000001;
 
+    // Build scene
     Scene scene(options);
 
-    // Define objects
     auto floor = std::unique_ptr<Plane>(new Plane(PointD(0.0, -400.0, 0.0), VectorD(0.0, 1.0, 0.0)));
     auto wall_left = std::unique_ptr<Plane>(new Plane(PointD(-400.0, 0.0, 0.0), VectorD(1.0, 0.0, 0.0)));
     auto wall_right = std::unique_ptr<Plane>(new Plane(PointD(400.0, 0.0, 0.0), VectorD(-1.0, 0.0, 0.0)));
@@ -55,7 +57,6 @@ int main(int argc, char *argv[])
     auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(0.0, -250.0, -450.0), 150.0));
     auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(180.0, -300.0, -300.0), 100.0));
 
-    // Specify materials
     auto red_phong = std::make_shared<PhongMaterial>(
                 Color(0.6f, 0.0f, 0.0f), Color(0.5f, 0.0f, 0.0f), Color(0.6f, 0.6f, 0.6f), 20.0);
     auto blue_phong = std::make_shared<PhongMaterial>(
@@ -79,7 +80,6 @@ int main(int argc, char *argv[])
     scene.add_object(std::move(sphere_1));
     scene.add_object(std::move(sphere_2));
 
-    // Set light sources
     auto ambient_light = std::unique_ptr<AmbientLight>(
                 new AmbientLight(Color(0.3f, 0.3f, 0.3f), 1.0f));
     auto point_light = std::unique_ptr<PointLight>(
@@ -87,18 +87,6 @@ int main(int argc, char *argv[])
     scene.set_ambient_light(std::move(ambient_light));
     scene.add_light(std::move(point_light));
 
-    // Define render window
-    SDLWindow window(width, height);
-    bool quit = false;
-    window.on_quit([&quit]()
-        {
-            quit = true;
-        }
-    );
-    quit = !window.show();
-
-    Ray ray;
-    Color pixel_color;
     auto perspective_cam = std::unique_ptr<PerspectiveCamera>(new PerspectiveCamera());
     perspective_cam->set_field_of_view(60);
     perspective_cam->set_position(PointD(0.0f, 0.0f, 500.0f));
@@ -108,37 +96,25 @@ int main(int argc, char *argv[])
     perspective_cam->set_pixel_size(1.0f);
     scene.set_camera(std::move(perspective_cam));
 
-    // For each pixel
-    Camera *camera = scene.camera();
-    if(!camera)
-    {
-        //TODO
-    }
-    for(short y = 0; y < height && !quit; ++y)
-    {
-        Y_POS = y;
-        for(short x = 0; x < width && !quit; ++x)
+    // Render
+    SDLWindow window(width, height);
+    Renderer renderer(scene);
+
+    bool quit = false;
+    window.on_quit([&renderer, &quit]()
         {
-            X_POS = x;
-            ray = camera->create_ray(x, y);
-            Intersection intersection = scene.trace(ray);
-
-            if(intersection.exists && intersection.hit_object->material())
-            {
-                const Material *material = intersection.hit_object->material();
-                pixel_color = material->shade(intersection, scene);
-            }
-            else
-            {
-                pixel_color = scene.background();
-            }
-
-            window.set_pixel(x, y, pixel_color.r, pixel_color.g, pixel_color.b);
-            window.handle_events();
+            renderer.abort();
+            quit = true;
         }
-        window.refresh();
+    );
+
+    quit = !window.show();
+    if(!quit)
+    {
+      renderer.render(window);
     }
 
+    // Idle
     while(!quit)
     {
         std::chrono::milliseconds t(30);

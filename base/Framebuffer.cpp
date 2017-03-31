@@ -2,7 +2,7 @@
 
 
 Framebuffer::Framebuffer(short width, short height)
+  : width(width)
+  , height(height)
 {
-    this->width = width;
-    this->height = height;
 }

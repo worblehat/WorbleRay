@@ -21,6 +21,8 @@ add_executable(${PROJECT_NAME}
     core/Intersection.h
     core/Ray.cpp
     core/Ray.h
+    core/Renderer.cpp
+    core/Renderer.h
     core/Scene.cpp
     core/Scene.h
     impl/AmbientLight.cpp

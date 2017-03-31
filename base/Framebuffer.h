@@ -13,9 +13,9 @@ public:
     virtual void refresh() = 0;
     virtual void handle_events() = 0;
     virtual void on_quit(std::function<void()> callback) = 0;
-protected:
-    short width;
-    short height;
+public:
+    const short width;
+    const short height;
 }; 
 
 #endif //ifndef FRAMEBUFFER_H
