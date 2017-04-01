@@ -75,7 +75,7 @@ Color& Color::operator+=(float f)
 {
     r += f;
     g += f;
-    r += f;
+    b += f;
     return *this;
 }
 
@@ -83,7 +83,7 @@ Color& Color::operator-=(float f)
 {
     r -= f;
     g -= f;
-    r -= f;
+    b -= f;
     return *this;
 }
 
@@ -91,6 +91,6 @@ Color& Color::operator*=(float f)
 {
     r *= f;
     g *= f;
-    r *= f;
+    b *= f;
     return *this;
 }
