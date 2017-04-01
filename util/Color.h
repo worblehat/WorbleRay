@@ -45,6 +45,10 @@ public:
     Color operator*(float f) const;
     //! color *= float
     Color& operator*=(float f);
+    //! color = color / float
+    Color operator/(float f) const;
+    //! color /= float
+    Color& operator/=(float f);
 
 public:
     float r;

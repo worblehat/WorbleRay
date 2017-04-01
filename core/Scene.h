@@ -15,6 +15,14 @@ class Light;
 class Ray;
 
 
+enum class ToneMapping
+{
+    None,
+    Highlight,
+    Clamp,
+    Scale
+};
+
 struct Options
 {
     bool ambient_illumination = true;
@@ -23,6 +31,7 @@ struct Options
     bool shadows = true;
     double intersection_epsilon = 0.0000001;
     double gamma = 1.0;
+    ToneMapping tone_mapping = ToneMapping::Scale;
 };
 
 /**

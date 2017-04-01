@@ -5,6 +5,7 @@
 * matte and glossy materials
 * ambient light and point light
 * shadows
+* tone mapping and gamma correction
 
 # To Do
 
@@ -19,11 +20,11 @@
   * soft shadows
 * area light
 * ambient occlusion
-* gamma correction (see http://bit.ly/2nSqbJl)
 * triangle-intersection and shading (flat, Gouraud, Phong)
 * progressive raytracing for early feedback
 * fish-eye camera, stereoscopic camera
 * import meshes (and materials)
+* advanced tone mapping
 * save image to file (SDLImageFile, SDL_SaveBMP)
 * acceleration with bounding volumes
 * global diffuse illumination (Photon Mapping, Path Tracing...)

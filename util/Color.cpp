@@ -71,6 +71,12 @@ Color Color::operator*(float f) const
     return Color(r * f, g * f, b * f);
 }
 
+
+Color Color::operator/(float f) const
+{
+    return Color(r / f, g / f, b /f);
+}
+
 Color& Color::operator+=(float f)
 {
     r += f;
@@ -92,5 +98,13 @@ Color& Color::operator*=(float f)
     r *= f;
     g *= f;
     b *= f;
+    return *this;
+}
+
+Color &Color::operator/=(float f)
+{
+    r /= f;
+    g /= f;
+    b /= f;
     return *this;
 }

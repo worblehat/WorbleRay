@@ -9,6 +9,7 @@
 #include "Renderer.h"
 #include "Scene.h"
 
+#include <algorithm>
 #include <cmath>
 
 
@@ -74,6 +75,30 @@ Color Renderer::calculate_pixel(int x, int y) const
     else
     {
         pixel_color = scene.background();
+    }
+
+    // Tone mapping
+    ToneMapping tm = scene.options().tone_mapping;
+    if(ToneMapping::Highlight == tm)
+    {
+        if(pixel_color.r > 1.0 || pixel_color.g > 1.0 || pixel_color.b > 1.0)
+        {
+          pixel_color = Color(1.0, 0.75, 0.0);
+        }
+    }
+    else if(ToneMapping::Clamp == tm)
+    {
+        pixel_color.r = pixel_color.r > 1.0 ? 1.0 : pixel_color.r;
+        pixel_color.g = pixel_color.g > 1.0 ? 1.0 : pixel_color.g;
+        pixel_color.b = pixel_color.b > 1.0 ? 1.0 : pixel_color.b;
+    }
+    else if(ToneMapping::Scale == tm)
+    {
+        double max_value = std::max(pixel_color.r, std::max(pixel_color.g, pixel_color.b));
+        if(max_value > 1.0)
+        {
+            pixel_color /= max_value;
+        }
     }
 
     // Gamma correction

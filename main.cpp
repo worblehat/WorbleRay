@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
     options.shadows = true;
     options.intersection_epsilon = 0.0000000001;
     options.gamma = 1.4;
+    options.tone_mapping = ToneMapping::Scale;
 
     // Build scene
     Scene scene(options);
