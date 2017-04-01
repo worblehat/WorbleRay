@@ -9,11 +9,19 @@
 #include "Renderer.h"
 #include "Scene.h"
 
+#include <cmath>
+
 
 Renderer::Renderer(const Scene &scene)
     : scene(scene)
     , _abort(false)
+    , inv_gamma(0.0)
 {
+    double gamma = scene.options().gamma;
+    if(gamma != 1.0)
+    {
+        inv_gamma = 1.0 / gamma;
+    }
 }
 
 
@@ -52,9 +60,12 @@ void Renderer::render_progressive(Framebuffer &target) const
 Color Renderer::calculate_pixel(int x, int y) const
 {
     Color pixel_color;
+
+    // Ray tracing
     Ray ray = scene.camera()->create_ray(x, y);
     Intersection intersection = scene.trace(ray);
 
+    // Shading
     if(intersection.exists && intersection.hit_object->material())
     {
         const Material *material = intersection.hit_object->material();
@@ -63,6 +74,14 @@ Color Renderer::calculate_pixel(int x, int y) const
     else
     {
         pixel_color = scene.background();
+    }
+
+    // Gamma correction
+    if(inv_gamma > 0.0)
+    {
+        pixel_color.r = std::pow(pixel_color.r, inv_gamma);
+        pixel_color.g = std::pow(pixel_color.g, inv_gamma);
+        pixel_color.b = std::pow(pixel_color.b, inv_gamma);
     }
 
     return pixel_color;

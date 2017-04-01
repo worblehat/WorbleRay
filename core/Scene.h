@@ -22,6 +22,7 @@ struct Options
     bool specular_illumination = true;
     bool shadows = true;
     double intersection_epsilon = 0.0000001;
+    double gamma = 1.0;
 };
 
 /**

@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
     options.specular_illumination = true;
     options.shadows = true;
     options.intersection_epsilon = 0.0000000001;
+    options.gamma = 1.4;
 
     // Build scene
     Scene scene(options);

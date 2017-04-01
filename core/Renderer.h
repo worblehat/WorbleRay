@@ -22,6 +22,7 @@ private:
 private:
     const Scene &scene;
     bool _abort;
+    double inv_gamma;
 };
 
 #endif // ifndef RENDERER_H
