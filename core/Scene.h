@@ -31,7 +31,8 @@ struct Options
     bool shadows = true;
     double intersection_epsilon = 0.0000001;
     double gamma = 1.0;
-    ToneMapping tone_mapping = ToneMapping::Scale;
+    ToneMapping tone_mapping = ToneMapping::Clamp;
+    unsigned short max_recursion = 0;
 };
 
 /**

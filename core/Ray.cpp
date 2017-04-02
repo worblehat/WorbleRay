@@ -4,6 +4,7 @@
 Ray::Ray()
     : origin(0.0, 0.0, 0.0)
     , direction(0.0, 0.0, 1.0)
+    , recursion_depth(0)
 {
 }
 

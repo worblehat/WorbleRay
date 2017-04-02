@@ -18,6 +18,8 @@ public:
 public:
     PointD origin;
     VectorD direction;
+    // 0: primary ray, 1: first reflection, 2: second reflection ...
+    unsigned short recursion_depth;
 };
 
 #endif //ifndef RAY_H
