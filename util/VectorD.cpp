@@ -45,6 +45,11 @@ double VectorD::length() const
     return std::sqrt(x * x + y * y + z * z);
 }
 
+double VectorD::length_squared() const
+{
+    return x * x + y * y + z * z;
+}
+
 double VectorD::dot(const VectorD &v) const
 {
     return x * v.x + y * v.y + z * v.z;

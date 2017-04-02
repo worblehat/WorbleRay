@@ -21,6 +21,7 @@ public:
     std::string str() const;
 
     double length() const;
+    double length_squared() const;
     //! Dot-product
     double dot(const VectorD &v) const;
     //! Cross-product
