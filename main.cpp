@@ -53,7 +53,7 @@ int main()
     //auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(350.0, 150.0, -200.0), 150.0));
     auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(230.0, 200.0, -500.0), 200.0));
     auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(500.0, 150.0, -250.0), 150.0));
-    auto disk_1 = std::unique_ptr<Disk>(new Disk(PointD(-550.0, 150.0, 100.0), 150, VectorD(0.0, 1.0, 0.0)));
+    auto disk_1 = std::unique_ptr<Disk>(new Disk(PointD(-550.0, 150.0, 100.0), 180, VectorD(0.0, 1.0, 0.0)));
     auto disk_2 = std::unique_ptr<Disk>(new Disk(PointD(799.01, 400, 100.0), 350, VectorD(-1.0, 0.0, 0.0)));
     //auto disk_2 = std::unique_ptr<Disk>(new Disk(PointD(350, 400, -999.9), 350, VectorD(0.0, 0.0, 1.0)));
 

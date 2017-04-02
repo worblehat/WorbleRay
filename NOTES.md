@@ -1,9 +1,9 @@
 # Implemented Features
 
 * orthographic and perspective camera
-* rendering of spheres and planes
-* matte and glossy materials
-* ambient light and point light
+* rendering of spheres, planes and disks
+* matte, glossy and mirror materials
+* ambient and point light
 * shadows
 * tone mapping and gamma correction
 
@@ -11,17 +11,16 @@
 
 ## Featues
 
+* progressive raytracing for early feedback
 * directional light
+* area light
 * implicit torus-object
-* reflection
 * refraction
 * distributed ray tracing:
   * antialiasing
   * soft shadows
-* area light
 * ambient occlusion
 * triangle-intersection and shading (flat, Gouraud, Phong)
-* progressive raytracing for early feedback
 * fish-eye camera, stereoscopic camera
 * import meshes (and materials)
 * advanced tone mapping
