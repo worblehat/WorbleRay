@@ -27,6 +27,8 @@ add_executable(${PROJECT_NAME}
     core/Scene.h
     impl/AmbientLight.cpp
     impl/AmbientLight.h
+    impl/Disk.cpp
+    impl/Disk.h
     impl/LambertMaterial.cpp
     impl/LambertMaterial.h
     impl/OrthographicCamera.cpp

@@ -1,4 +1,5 @@
 #include "AmbientLight.h"
+#include "Disk.h"
 #include "Intersection.h"
 #include "LambertMaterial.h"
 #include "log.h"
@@ -49,6 +50,7 @@ int main()
     auto ceiling = std::unique_ptr<Plane>(new Plane(PointD(0.0, 1100.0, 0.0), VectorD(0.0, -1.0, 0.0)));
     auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(0.0, 200.0, -450.0), 200.0));
     auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(300.0, 150.0, -200.0), 150.0));
+    auto disk_1 = std::unique_ptr<Disk>(new Disk(PointD(-550.0, 150.0, 100.0), 150, VectorD(0.0, 1.0, 0.0)));
 
     auto perspective_cam = std::unique_ptr<PerspectiveCamera>(new PerspectiveCamera());
     perspective_cam->set_field_of_view(50);
@@ -81,6 +83,7 @@ int main()
     ceiling->set_material(dark_gray_lambert);
     sphere_1->set_material(red_phong);
     sphere_2->set_material(blue_phong);
+    disk_1->set_material(blue_phong);
 
     scene.add_object(std::move(floor));
     scene.add_object(std::move(ceiling));
@@ -90,6 +93,7 @@ int main()
     scene.add_object(std::move(wall_front));
     scene.add_object(std::move(sphere_1));
     scene.add_object(std::move(sphere_2));
+    scene.add_object(std::move(disk_1));
 
     // Render
     SDLWindow window(options.width, options.height);
