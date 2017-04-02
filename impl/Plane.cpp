@@ -30,6 +30,7 @@ const Intersection Plane::intersect(const Ray& ray)
     double t = (point - ray.origin).dot(normal) / ray.direction.dot(normal);
 
     Intersection intersection;
+    intersection.incident_ray = ray;
     if (t > 0) {
         intersection.normal = normal;
         intersection.hit_point = ray.origin + t * ray.direction;
