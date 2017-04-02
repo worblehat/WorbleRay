@@ -28,7 +28,7 @@ public:
     Ray incident_ray;
     PointD hit_point;
     VectorD normal;
-    GeometricObject *hit_object;
+    const GeometricObject *hit_object;
 };
 
 #endif //ifndef INTERSECTION_H

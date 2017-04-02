@@ -17,7 +17,7 @@ Plane::Plane(const PointD& point ,const VectorD& normal)
 {
 }
 
-const Intersection Plane::intersect(const Ray& ray)
+const Intersection Plane::intersect(const Ray& ray) const
 {
     /*
      * A plane can be implicitly described by (q - p) * n = 0,

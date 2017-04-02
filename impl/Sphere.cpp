@@ -20,7 +20,7 @@ Sphere::Sphere(const PointD& center, float radius)
 {
 }
 
-const Intersection Sphere::intersect(const Ray& ray)
+const Intersection Sphere::intersect(const Ray& ray) const
 {
     /*
      * An intersection between a ray and sphere can be described by two different formulas, which

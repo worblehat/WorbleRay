@@ -14,7 +14,7 @@ public:
     Sphere();
     Sphere(const PointD& center, float radius);
 
-    virtual const Intersection intersect(const Ray& ray);
+    virtual const Intersection intersect(const Ray& ray) const override;
 private:
     PointD center;
     float radius;

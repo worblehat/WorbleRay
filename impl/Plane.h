@@ -17,7 +17,7 @@ public:
     Plane();
     Plane(const PointD& point, const VectorD& normal);
 
-    virtual const Intersection intersect(const Ray& ray);
+    virtual const Intersection intersect(const Ray& ray) const override;
 private:
     PointD point;
     VectorD normal;
