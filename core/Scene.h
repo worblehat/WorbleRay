@@ -25,6 +25,8 @@ enum class ToneMapping
 
 struct Options
 {
+    unsigned short width = 500;
+    unsigned short height = 500;
     bool ambient_illumination = true;
     bool diffuse_illumination = true;
     bool specular_illumination = true;
