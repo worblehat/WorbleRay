@@ -3,6 +3,7 @@
 #include "Intersection.h"
 #include "LambertMaterial.h"
 #include "log.h"
+#include "MirrorMaterial.h"
 #include "OrthographicCamera.h"
 #include "PerspectiveCamera.h"
 #include "PhongMaterial.h"
@@ -48,9 +49,13 @@ int main()
     auto wall_back = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, -1000.0), VectorD(0.0, 0.0, 1.0)));
     auto wall_front = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, 2500.0), VectorD(0.0, 0.0, -1.0)));
     auto ceiling = std::unique_ptr<Plane>(new Plane(PointD(0.0, 1100.0, 0.0), VectorD(0.0, -1.0, 0.0)));
-    auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(0.0, 200.0, -450.0), 200.0));
-    auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(300.0, 150.0, -200.0), 150.0));
+    //auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(50.0, 200.0, -450.0), 200.0));
+    //auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(350.0, 150.0, -200.0), 150.0));
+    auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(230.0, 200.0, -500.0), 200.0));
+    auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(500.0, 150.0, -250.0), 150.0));
     auto disk_1 = std::unique_ptr<Disk>(new Disk(PointD(-550.0, 150.0, 100.0), 150, VectorD(0.0, 1.0, 0.0)));
+    auto disk_2 = std::unique_ptr<Disk>(new Disk(PointD(799.01, 400, 100.0), 350, VectorD(-1.0, 0.0, 0.0)));
+    //auto disk_2 = std::unique_ptr<Disk>(new Disk(PointD(350, 400, -999.9), 350, VectorD(0.0, 0.0, 1.0)));
 
     auto perspective_cam = std::unique_ptr<PerspectiveCamera>(new PerspectiveCamera());
     perspective_cam->set_field_of_view(50);
@@ -75,6 +80,7 @@ int main()
     auto green_lambert = std::make_shared<LambertMaterial>(Color(0.0f, 0.6f, 0.0f), Color(0.0f, 0.5f, 0.0f));
     auto light_gray_lambert = std::make_shared<LambertMaterial>(Color(0.8f, 0.8f, 0.8f), Color(0.5f, 0.5f, 0.5f));
     auto dark_gray_lambert = std::make_shared<LambertMaterial>(Color(0.5f, 0.5f, 0.5f), Color(0.2f, 0.2f, 0.2f));
+    auto mirror = std::make_shared<MirrorMaterial>();
     floor->set_material(green_lambert);
     wall_left->set_material(light_gray_lambert);
     wall_right->set_material(light_gray_lambert);
@@ -84,6 +90,7 @@ int main()
     sphere_1->set_material(red_phong);
     sphere_2->set_material(blue_phong);
     disk_1->set_material(blue_phong);
+    disk_2->set_material(mirror);
 
     scene.add_object(std::move(floor));
     scene.add_object(std::move(ceiling));
@@ -94,6 +101,7 @@ int main()
     scene.add_object(std::move(sphere_1));
     scene.add_object(std::move(sphere_2));
     scene.add_object(std::move(disk_1));
+    scene.add_object(std::move(disk_2));
 
     // Render
     SDLWindow window(options.width, options.height);

@@ -31,6 +31,8 @@ add_executable(${PROJECT_NAME}
     impl/Disk.h
     impl/LambertMaterial.cpp
     impl/LambertMaterial.h
+    impl/MirrorMaterial.cpp
+    impl/MirrorMaterial.h
     impl/OrthographicCamera.cpp
     impl/OrthographicCamera.h
     impl/PerspectiveCamera.cpp
