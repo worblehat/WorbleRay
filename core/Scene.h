@@ -17,10 +17,10 @@ class Ray;
 
 enum class ToneMapping
 {
-    None,
-    Highlight,
-    Clamp,
-    Scale
+    NONE,
+    HIGHLIGHT,
+    CLAMP,
+    SCALE
 };
 
 struct Options
@@ -33,7 +33,7 @@ struct Options
     bool shadows = true;
     double intersection_epsilon = 0.0000001;
     double gamma = 1.0;
-    ToneMapping tone_mapping = ToneMapping::Clamp;
+    ToneMapping tone_mapping = ToneMapping::CLAMP;
     unsigned short max_recursion = 0;
 };
 
