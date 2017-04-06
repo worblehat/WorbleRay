@@ -17,6 +17,8 @@ public:
 private:
     void render_iterative(Framebuffer &target) const;
     void render_progressive(Framebuffer &target) const;
+    void render_progressive_with_lookup(Framebuffer &target) const;
+    void render_rect(short x, short y, short step, Framebuffer &target) const;
     Color calculate_pixel(int x, int y) const;
 
 private:

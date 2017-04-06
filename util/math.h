@@ -19,5 +19,15 @@ namespace math
     {
         return radian * _180_pi;
     }
+
+    inline double next_power_of_two(double x)
+    {
+        short result = 1;
+        while(result < x)
+        {
+           result *= 2;
+        }
+        return result;
+    }
 }
 #endif // MATH_H

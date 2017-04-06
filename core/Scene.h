@@ -23,6 +23,13 @@ enum class ToneMapping
     SCALE
 };
 
+enum class RenderProgression
+{
+    ITERATIVE,
+    UNIFORM_PROGRESSIVE,
+    UNIFORM_PROGRESSIVE_2
+};
+
 struct Options
 {
     unsigned short width = 500;
@@ -35,6 +42,7 @@ struct Options
     double gamma = 1.0;
     ToneMapping tone_mapping = ToneMapping::CLAMP;
     unsigned short max_recursion = 0;
+    RenderProgression progression = RenderProgression::ITERATIVE;
 };
 
 /**

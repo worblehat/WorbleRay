@@ -39,6 +39,7 @@ int main()
     options.gamma = 1.4;
     options.tone_mapping = ToneMapping::SCALE;
     options.max_recursion = 4;
+    options.progression = RenderProgression::UNIFORM_PROGRESSIVE;
 
     // Build scene
     Scene scene(options);
