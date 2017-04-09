@@ -8,12 +8,12 @@
 
 Sphere::Sphere()
     : GeometricObject()
-    , center(PointD(0.0, 0.0, 0.0))
+    , center(PointD3(0.0, 0.0, 0.0))
     , radius(1.0)
 {
 }
 
-Sphere::Sphere(const PointD& center, float radius)
+Sphere::Sphere(const PointD3& center, float radius)
     : GeometricObject()
     , center(center)
     , radius(radius)
@@ -49,7 +49,7 @@ const Intersection Sphere::intersect(const Ray& ray) const
     intersection.exists = false;
     intersection.incident_ray = ray;
     double t;
-    PointD r_o = ray.origin;
+    PointD3 r_o = ray.origin;
     VectorD r_d = ray.direction;
 
     // Precalculations

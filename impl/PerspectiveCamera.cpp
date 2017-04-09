@@ -1,7 +1,7 @@
 #include "math.h"
 #include "log.h"
 #include "PerspectiveCamera.h"
-#include "PointD.h"
+#include "PointD3.h"
 #include "Ray.h"
 #include "VectorD.h"
 
@@ -36,13 +36,13 @@ Ray PerspectiveCamera::create_ray(int x, int y) const
     // Vector from camera position to center of view plane
     VectorD v_f = look_at * f;
     // Top-left corner of view plane
-    PointD v_center = position + v_f;
-    PointD v_origin = v_center - (v_right / 2.0f) - (v_down / 2.0f);
+    PointD3 v_center = position + v_f;
+    PointD3 v_origin = v_center - (v_right / 2.0f) - (v_down / 2.0f);
     // Normalized pixel positions [0,1]
     float n_x = (float)x / x_res;
     float n_y = (float)y / y_res;
     // Pixel position in world space
-    PointD pixel_pos = v_origin + (v_right * n_x) + (v_down * n_y);
+    PointD3 pixel_pos = v_origin + (v_right * n_x) + (v_down * n_y);
     // Adjust to center of pixel
     v_right.normalize();
     v_down.normalize();

@@ -2,7 +2,7 @@
 #define PLANE_H
 
 #include "GeometricObject.h"
-#include "PointD.h"
+#include "PointD3.h"
 #include "VectorD.h"
 
 
@@ -15,11 +15,11 @@ class Plane : public GeometricObject
 {
 public:
     Plane();
-    Plane(const PointD& point, const VectorD& normal);
+    Plane(const PointD3& point, const VectorD& normal);
 
     virtual const Intersection intersect(const Ray& ray) const override;
 private:
-    PointD point;
+    PointD3 point;
     VectorD normal;
 };
 

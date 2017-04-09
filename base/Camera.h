@@ -1,7 +1,7 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
-#include "PointD.h"
+#include "PointD3.h"
 #include "VectorD.h"
 
 class Ray;
@@ -18,7 +18,7 @@ public:
     virtual ~Camera() = default;
 
     virtual Ray create_ray(int x, int y) const = 0;
-    void set_position(const PointD &position);
+    void set_position(const PointD3 &position);
     void set_look_at(const VectorD &look_at);
     void set_up_vector(const VectorD &up);
     void set_resolution(int x, int y);
@@ -26,7 +26,7 @@ public:
 
 protected:
     // Camera attributes
-    PointD position;
+    PointD3 position;
     VectorD look_at;
     VectorD up;
     // View plane attributes

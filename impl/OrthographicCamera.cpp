@@ -1,5 +1,5 @@
 #include "OrthographicCamera.h"
-#include "PointD.h"
+#include "PointD3.h"
 #include "Ray.h"
 #include "VectorD.h"
 
@@ -21,12 +21,12 @@ Ray OrthographicCamera::create_ray(int x, int y) const
     // Vectors spanning the view plane
     VectorD v_down = -up * view_h;
     VectorD v_right = side * view_w;
-    PointD v_origin = position - (v_right / 2.0f) - (v_down / 2.0f);
+    PointD3 v_origin = position - (v_right / 2.0f) - (v_down / 2.0f);
     // Normalized pixel positions [0,1]
     float n_x = (float)x / x_res;
     float n_y = (float)y / y_res;
     // Pixel position in world space
-    PointD pixel_pos = v_origin + (v_right * n_x) + (v_down * n_y);
+    PointD3 pixel_pos = v_origin + (v_right * n_x) + (v_down * n_y);
     // Adjust to center of pixel
     v_right.normalize();
     v_down.normalize();

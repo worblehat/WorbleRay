@@ -3,7 +3,7 @@
 
 #include <string>
 
-class PointD;
+class PointD3;
 
 
 /**
@@ -15,7 +15,7 @@ class VectorD
 public:
     VectorD();
     VectorD(double x, double y, double z);
-    explicit VectorD(const PointD &p);
+    explicit VectorD(const PointD3 &p);
     VectorD(const VectorD &v);
 
     std::string str() const;

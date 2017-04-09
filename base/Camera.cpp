@@ -10,7 +10,7 @@ Camera::Camera()
 {
 }
 
-void Camera::set_position(const PointD &position)
+void Camera::set_position(const PointD3 &position)
 {
   this->position = position;
 }

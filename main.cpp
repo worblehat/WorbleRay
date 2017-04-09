@@ -44,23 +44,23 @@ int main()
     // Build scene
     Scene scene(options);
 
-    auto floor = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, 0.0), VectorD(0.0, 1.0, 0.0)));
-    auto wall_left = std::unique_ptr<Plane>(new Plane(PointD(-800.0, 0.0, 0.0), VectorD(1.0, 0.0, 0.0)));
-    auto wall_right = std::unique_ptr<Plane>(new Plane(PointD(800.0, 0.0, 0.0), VectorD(-1.0, 0.0, 0.0)));
-    auto wall_back = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, -1000.0), VectorD(0.0, 0.0, 1.0)));
-    auto wall_front = std::unique_ptr<Plane>(new Plane(PointD(0.0, 0.0, 2500.0), VectorD(0.0, 0.0, -1.0)));
-    auto ceiling = std::unique_ptr<Plane>(new Plane(PointD(0.0, 1100.0, 0.0), VectorD(0.0, -1.0, 0.0)));
-    //auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(50.0, 200.0, -450.0), 200.0));
-    //auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(350.0, 150.0, -200.0), 150.0));
-    auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD(230.0, 200.0, -500.0), 200.0));
-    auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD(500.0, 150.0, -250.0), 150.0));
-    auto disk_1 = std::unique_ptr<Disk>(new Disk(PointD(-550.0, 150.0, 100.0), 180, VectorD(0.0, 1.0, 0.0)));
-    auto disk_2 = std::unique_ptr<Disk>(new Disk(PointD(799.01, 400, 100.0), 350, VectorD(-1.0, 0.0, 0.0)));
-    //auto disk_2 = std::unique_ptr<Disk>(new Disk(PointD(350, 400, -999.9), 350, VectorD(0.0, 0.0, 1.0)));
+    auto floor = std::unique_ptr<Plane>(new Plane(PointD3(0.0, 0.0, 0.0), VectorD(0.0, 1.0, 0.0)));
+    auto wall_left = std::unique_ptr<Plane>(new Plane(PointD3(-800.0, 0.0, 0.0), VectorD(1.0, 0.0, 0.0)));
+    auto wall_right = std::unique_ptr<Plane>(new Plane(PointD3(800.0, 0.0, 0.0), VectorD(-1.0, 0.0, 0.0)));
+    auto wall_back = std::unique_ptr<Plane>(new Plane(PointD3(0.0, 0.0, -1000.0), VectorD(0.0, 0.0, 1.0)));
+    auto wall_front = std::unique_ptr<Plane>(new Plane(PointD3(0.0, 0.0, 2500.0), VectorD(0.0, 0.0, -1.0)));
+    auto ceiling = std::unique_ptr<Plane>(new Plane(PointD3(0.0, 1100.0, 0.0), VectorD(0.0, -1.0, 0.0)));
+    //auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD3(50.0, 200.0, -450.0), 200.0));
+    //auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD3(350.0, 150.0, -200.0), 150.0));
+    auto sphere_1 = std::unique_ptr<Sphere>(new Sphere(PointD3(230.0, 200.0, -500.0), 200.0));
+    auto sphere_2 = std::unique_ptr<Sphere>(new Sphere(PointD3(500.0, 150.0, -250.0), 150.0));
+    auto disk_1 = std::unique_ptr<Disk>(new Disk(PointD3(-550.0, 150.0, 100.0), 180, VectorD(0.0, 1.0, 0.0)));
+    auto disk_2 = std::unique_ptr<Disk>(new Disk(PointD3(799.01, 400, 100.0), 350, VectorD(-1.0, 0.0, 0.0)));
+    //auto disk_2 = std::unique_ptr<Disk>(new Disk(PointD3(350, 400, -999.9), 350, VectorD(0.0, 0.0, 1.0)));
 
     auto perspective_cam = std::unique_ptr<PerspectiveCamera>(new PerspectiveCamera());
     perspective_cam->set_field_of_view(50);
-    perspective_cam->set_position(PointD(0.0f, 800.0f, 2200.0f));
+    perspective_cam->set_position(PointD3(0.0f, 800.0f, 2200.0f));
     perspective_cam->set_look_at(VectorD(0.0f, -0.15f, -1.0f));
     perspective_cam->set_up_vector(VectorD(0.0f, 1.0f, 0.0f));
     perspective_cam->set_resolution(options.width, options.height);
@@ -70,7 +70,7 @@ int main()
     auto ambient_light = std::unique_ptr<AmbientLight>(
                 new AmbientLight(Color(0.3f, 0.3f, 0.3f), 1.0f));
     auto point_light = std::unique_ptr<PointLight>(
-            new PointLight(PointD(500.0f, 1000.0f, 0.0f), Color(0.7f, 0.7f, 0.7f)));
+            new PointLight(PointD3(500.0f, 1000.0f, 0.0f), Color(0.7f, 0.7f, 0.7f)));
     scene.set_ambient_light(std::move(ambient_light));
     scene.add_light(std::move(point_light));
 

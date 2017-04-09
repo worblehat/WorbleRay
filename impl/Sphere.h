@@ -2,7 +2,7 @@
 #define SPHERE_H
 
 #include "GeometricObject.h"
-#include "PointD.h"
+#include "PointD3.h"
 
 
 /**
@@ -12,11 +12,11 @@ class Sphere : public GeometricObject
 {
 public:
     Sphere();
-    Sphere(const PointD& center, float radius);
+    Sphere(const PointD3& center, float radius);
 
     virtual const Intersection intersect(const Ray& ray) const override;
 private:
-    PointD center;
+    PointD3 center;
     float radius;
 };
 

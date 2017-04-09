@@ -23,7 +23,7 @@ PhongMaterial::PhongMaterial(const Color& ambient, const Color& diffuse, const C
 Color PhongMaterial::shade(const Intersection& intersection, const Scene& scene) const
 {
     Color intensity;
-    PointD point = intersection.hit_point;
+    PointD3 point = intersection.hit_point;
     Options options = scene.options();
 
     if(options.diffuse_illumination || options.specular_illumination)

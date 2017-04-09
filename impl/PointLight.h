@@ -3,19 +3,19 @@
 
 #include "Color.h"
 #include "Light.h"
-#include "PointD.h"
+#include "PointD3.h"
 
 
 class PointLight : public Light
 {
 public:
-    PointLight(const PointD& position = PointD(0.0, 0.0, 0.0),
+    PointLight(const PointD3& position = PointD3(0.0, 0.0, 0.0),
                const Color& color = Color(1.0, 1.0, 1.0),
                float radiance = 1.0);
-    virtual VectorD direction_at(const PointD& point) const override;
-    virtual Color intensity(const PointD& point, const Scene& scene) const override;
+    virtual VectorD direction_at(const PointD3& point) const override;
+    virtual Color intensity(const PointD3& point, const Scene& scene) const override;
 private:
-    PointD position;
+    PointD3 position;
 };
 
 #endif //ifndef POINTLIGHT_H

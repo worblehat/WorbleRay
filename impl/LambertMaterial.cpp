@@ -18,7 +18,7 @@ LambertMaterial::LambertMaterial(const Color& ambient, const Color& diffuse)
 Color LambertMaterial::shade(const Intersection& intersection, const Scene& scene) const
 {
     Color intensity;
-    PointD point = intersection.hit_point;
+    PointD3 point = intersection.hit_point;
 
     // === Diffuse reflection ===
     if(scene.options().diffuse_illumination)

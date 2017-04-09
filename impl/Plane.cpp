@@ -5,12 +5,12 @@
 
 Plane::Plane()
     : GeometricObject()
-    , point(PointD(0.0, 0.0, 0.0))
+    , point(PointD3(0.0, 0.0, 0.0))
     , normal(VectorD(0.0, 1.0, 0.0))
 {
 }
 
-Plane::Plane(const PointD& point ,const VectorD& normal)
+Plane::Plane(const PointD3& point ,const VectorD& normal)
     : GeometricObject()
     , point(point)
     , normal(normal)

@@ -1,4 +1,4 @@
-#include "PointD.h"
+#include "PointD3.h"
 #include "VectorD.h"
 
 #include <cmath>
@@ -18,7 +18,7 @@ VectorD::VectorD(double x, double y, double z)
 {
 }
 
-VectorD::VectorD(const PointD &p)
+VectorD::VectorD(const PointD3 &p)
     : x(p.x)
     , y(p.y)
     , z(p.z)

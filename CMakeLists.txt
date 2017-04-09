@@ -51,8 +51,10 @@ add_executable(${PROJECT_NAME}
     util/Color.h
     util/log.h
     util/math.h
-    util/PointD.cpp
-    util/PointD.h
+    util/PointD2.cpp
+    util/PointD2.h
+    util/PointD3.cpp
+    util/PointD3.h
     util/VectorD.cpp
     util/VectorD.h
     main.cpp

@@ -2,7 +2,7 @@
 #define DISK_H
 
 #include "GeometricObject.h"
-#include "PointD.h"
+#include "PointD3.h"
 #include "VectorD.h"
 
 
@@ -13,11 +13,11 @@ class Disk : public GeometricObject
 {
 public:
     Disk();
-    Disk(const PointD& center, float radius, const VectorD& normal);
+    Disk(const PointD3& center, float radius, const VectorD& normal);
 
     virtual const Intersection intersect(const Ray& ray) const override;
 private:
-    PointD center;
+    PointD3 center;
     float radius;
     VectorD normal;
 };

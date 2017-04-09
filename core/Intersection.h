@@ -1,7 +1,7 @@
 #ifndef INTERSECTION_H
 #define INTERSECTION_H
 
-#include "PointD.h"
+#include "PointD3.h"
 #include "Ray.h"
 #include "VectorD.h"
 
@@ -26,7 +26,7 @@ public:
     bool exists;
     double t; //TODO needed?
     Ray incident_ray;
-    PointD hit_point;
+    PointD3 hit_point;
     VectorD normal;
     const GeometricObject *hit_object;
 };
