@@ -12,6 +12,10 @@ class PointD2
 public:
     PointD2();
     PointD2(double x, double y);
+    PointD2(const PointD2 &p);
+
+    //! point = point
+    PointD2 &operator=(const PointD2 &p);
 
     std::string str() const;
 

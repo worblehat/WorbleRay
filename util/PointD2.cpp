@@ -14,6 +14,22 @@ PointD2::PointD2(double x, double y)
 
 }
 
+PointD2::PointD2(const PointD2 &p)
+    : x(p.x)
+    , y(p.y)
+{
+
+}
+
+PointD2 &PointD2::operator=(const PointD2 &p)
+{
+    if(this != &p)
+    {
+        x = p.x;
+        y = p.y;
+    }
+}
+
 std::string PointD2::str() const
 {
     std::string x_str = std::to_string(x);
