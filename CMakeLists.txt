@@ -17,6 +17,8 @@ add_executable(${PROJECT_NAME}
     base/Light.cpp
     base/Light.h
     base/Material.h
+    base/Sampler.cpp
+    base/Sampler.h
     core/Intersection.cpp
     core/Intersection.h
     core/Ray.cpp
