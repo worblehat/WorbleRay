@@ -16,4 +16,4 @@ along with this program. If not, see <http://www.gnu.org/licenses>.
 
 # Gallery
 
-![](http://worblehat.github.io/storage/rt-rendering-4.png)
+![](http://worblehat.github.io/storage/rt-rendering-5.png)
