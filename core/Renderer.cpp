@@ -7,7 +7,9 @@
 #include "Material.h"
 #include "math.h"
 #include "Ray.h"
+#include "RegularSampler.h"
 #include "Renderer.h"
+#include "Sampler.h"
 #include "Scene.h"
 
 #include <algorithm>
@@ -127,25 +129,52 @@ void Renderer::render_rect(short x, short y, short step, Framebuffer &target) co
 
 Color Renderer::calculate_pixel(int x, int y) const
 {
-    Color pixel_color;
+    const Options options = scene.options();
 
-    // Ray tracing
-    Ray ray = scene.camera()->create_ray(x, y);
-    Intersection intersection = scene.trace(ray);
-
-    // Shading
-    if(intersection.exists && intersection.hit_object->material())
+    // Create sampler for anti-aliasing
+    std::unique_ptr<Sampler> sampler;
+    if(AntiAliasing::REGULAR_SUPER_SAMPLING == options.anti_aliasing)
     {
-        const Material *material = intersection.hit_object->material();
-        pixel_color = material->shade(intersection, scene);
+        int samples = options.anti_aliasing_samples;
+        sampler = std::unique_ptr<Sampler>(new RegularSampler(samples));
     }
     else
     {
-        pixel_color = scene.background();
+        sampler = std::unique_ptr<Sampler>(new RegularSampler(1));
     }
 
+    // Sample pixel
+    std::vector<Color> color_samples;
+    color_samples.reserve(sampler->num_samples());
+    for(int i = 0; i < sampler->num_samples(); ++i)
+    {
+        // Ray tracing
+        PointD2 sample_point = sampler->next();
+        Ray ray = scene.camera()->create_ray(x, y, sample_point);
+        Intersection intersection = scene.trace(ray);
+
+        // Shading
+        if(intersection.exists && intersection.hit_object->material())
+        {
+            const Material *material = intersection.hit_object->material();
+            color_samples.push_back(material->shade(intersection, scene));
+        }
+        else
+        {
+            color_samples.push_back(scene.background());
+        }
+    }
+
+    // Combine color samples
+    Color pixel_color;
+    for(int i = 0; i < color_samples.size(); ++i)
+    {
+        pixel_color += color_samples.at(i);
+    }
+    pixel_color /= (float)color_samples.size();
+
     // Tone mapping
-    ToneMapping tm = scene.options().tone_mapping;
+    ToneMapping tm = options.tone_mapping;
     if(ToneMapping::HIGHLIGHT == tm)
     {
         if(pixel_color.r > 1.0 || pixel_color.g > 1.0 || pixel_color.b > 1.0)

@@ -40,6 +40,8 @@ int main()
     options.tone_mapping = ToneMapping::SCALE;
     options.max_recursion = 4;
     options.progression = RenderProgression::UNIFORM_PROGRESSIVE;
+    options.anti_aliasing = AntiAliasing::REGULAR_SUPER_SAMPLING;
+    options.anti_aliasing_samples = 16;
 
     // Build scene
     Scene scene(options);

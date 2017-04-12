@@ -30,6 +30,12 @@ enum class RenderProgression
     UNIFORM_PROGRESSIVE_2
 };
 
+enum class AntiAliasing
+{
+    NONE,
+    REGULAR_SUPER_SAMPLING,
+};
+
 struct Options
 {
     unsigned short width = 500;
@@ -43,6 +49,8 @@ struct Options
     ToneMapping tone_mapping = ToneMapping::CLAMP;
     unsigned short max_recursion = 0;
     RenderProgression progression = RenderProgression::ITERATIVE;
+    AntiAliasing anti_aliasing = AntiAliasing::NONE;
+    unsigned short anti_aliasing_samples = 1;
 };
 
 /**
