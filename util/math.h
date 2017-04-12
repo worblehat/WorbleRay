@@ -1,6 +1,8 @@
 #ifndef MATH_H
 #define MATH_H
 
+#include <cmath>
+
 namespace math
 {
     // π
@@ -25,9 +27,16 @@ namespace math
         short result = 1;
         while(result < x)
         {
-           result *= 2;
+            result *= 2;
         }
         return result;
+    }
+
+    inline double next_smaller_square_number(double x)
+    {
+        double root = std::sqrt(x);
+        int floor = static_cast<int>(root);
+        return floor * floor;
     }
 }
 #endif // MATH_H

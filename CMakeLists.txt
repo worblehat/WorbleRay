@@ -49,6 +49,8 @@ add_executable(${PROJECT_NAME}
     impl/SDLWindow.h
     impl/Sphere.cpp
     impl/Sphere.h
+    impl/RegularSampler.cpp
+    impl/RegularSampler.h
     util/Color.cpp
     util/Color.h
     util/log.h

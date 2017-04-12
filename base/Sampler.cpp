@@ -7,7 +7,7 @@ Sampler::Sampler(unsigned short num_samples)
 
 }
 
-unsigned short Sampler::num_samples()
+unsigned short Sampler::num_samples() const
 {
     return _num_samples;
 }
