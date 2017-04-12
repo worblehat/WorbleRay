@@ -28,6 +28,7 @@ PointD2 &PointD2::operator=(const PointD2 &p)
         x = p.x;
         y = p.y;
     }
+    return *this;
 }
 
 std::string PointD2::str() const
