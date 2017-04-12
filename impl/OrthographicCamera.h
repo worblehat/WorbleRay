@@ -13,6 +13,7 @@ public:
     OrthographicCamera();
 
     virtual Ray create_ray(int x, int y) const override;
+    virtual Ray create_ray(int x, int y, const PointD2 &sample_point) const override;
 };
 
 #endif //ifndef ORTHOGRAPHICCAMERA_H

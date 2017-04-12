@@ -1,6 +1,7 @@
 #include "math.h"
 #include "log.h"
 #include "PerspectiveCamera.h"
+#include "PointD2.h"
 #include "PointD3.h"
 #include "Ray.h"
 #include "VectorD.h"
@@ -19,6 +20,11 @@ void PerspectiveCamera::set_field_of_view(short degree)
 }
 
 Ray PerspectiveCamera::create_ray(int x, int y) const
+{
+    return create_ray(x, y, PointD2(0.5, 0.5));
+}
+
+Ray PerspectiveCamera::create_ray(int x, int y, const PointD2 &sample_point) const
 {
     Ray ray;
     // side points to the right in camera's perspective
@@ -43,14 +49,17 @@ Ray PerspectiveCamera::create_ray(int x, int y) const
     float n_y = (float)y / y_res;
     // Pixel position in world space
     PointD3 pixel_pos = v_origin + (v_right * n_x) + (v_down * n_y);
-    // Adjust to center of pixel
+    // Offset inside pixel
     v_right.normalize();
     v_down.normalize();
-    pixel_pos += v_right * (pixel_size / 2.0f) + v_down * (pixel_size / 2.0f);
+    double x_offset = pixel_size * sample_point.x;
+    double y_offset = pixel_size * sample_point.y;
+    pixel_pos += v_right * x_offset + v_down * y_offset;
 
     ray.origin = pixel_pos;
     ray.direction = pixel_pos - position;
     ray.direction.normalize();
 
     return ray;
+
 }

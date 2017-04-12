@@ -11,6 +11,7 @@ public:
 
     void set_field_of_view(short degree);
     virtual Ray create_ray(int x, int y) const override;
+    virtual Ray create_ray(int x, int y, const PointD2 &sample_point) const override;
 
 private:
     //! Field of view in radian
