@@ -6,19 +6,18 @@
 * ambient and point light
 * shadows
 * tone mapping and gamma correction
+* progressive raytracing for early feedback
+* anti-aliasing via super sampling
 
 # To Do
 
 ## Featues
 
-* progressive raytracing for early feedback
 * directional light
+* soft shadows
 * area light
-* implicit torus-object
+* transformable objects and transformations
 * refraction
-* distributed ray tracing:
-  * antialiasing
-  * soft shadows
 * ambient occlusion
 * triangle-intersection and shading (flat, Gouraud, Phong)
 * fish-eye camera, stereoscopic camera
@@ -30,11 +29,12 @@
 
 ## Technical Stuff
 
+* precalculate samples and reuse them; avoid creating new sampler for every pixel
+* tone mapping and gamma correction before or after averaging AA-samples?
 * special versions Scene::trace() and GeometricObject::intersect() for shadow rays which don't
   need the whole Intersection information
-* intensity clipping vs intensity scaling (see http://bit.ly/2nSqbJl)
 * optimize Camera::createRay() implementations with precalculations
 * use float instead of double where appropriate
-* matrix- and normal-class as needed
 * find a more efficient way of single pixel rendering in SDL2 and refresh window after every pixel
 * consider rule of 3 (5)
+* avoid the repeated if-else-checks ins Renderer::calculate_pixel()
