@@ -7,7 +7,7 @@ Dependencies:
 * SDL 2 (Simple Direct Media Layer)
 
 
-Copyright (C) 2017 Tobias Marquardt <tm@tobix.eu>
+Copyright (C) 2017 Tobias Marquardt <tmarq.contact@gmail.com>
 
 WorbleRay, is licensed under the GNU General Public License v3.
 You should have received a copy of the GNU General Public License
